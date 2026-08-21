@@ -1,0 +1,35 @@
+
+Loading panels...
+horizon 20d   days 3,333   non-adjacent day pairs 143
+  WARNING: the series has gaps, so the lag axis below is not
+  purely in trading days. Interpret with that in mind.
+daily IC: mean -0.00392   std 0.05182
+
+  Autocorrelation of the daily IC series. If the 20-day overlap
+  drives it, lag 1 starts near +0.95 and falls to 0 by lag 20.
+
+   lag       AC    overlap prediction   profile
+  --------------------------------------------------------------
+     1   -0.033                  0.95   -#
+     2   +0.014                  0.90   #
+     3   +0.038                  0.85   ##
+     4   -0.018                  0.80   -#
+     5   -0.002                  0.75   -
+     6   +0.034                  0.70   #
+     8   +0.029                  0.60   #
+    12   -0.021                  0.40   -#
+    16   +0.012                  0.20   
+    20   +0.003                  0.00   
+    24   +0.003                  0.00   
+    28   +0.004                  0.00   
+    32   -0.003                  0.00   -
+    36   +0.036                  0.00   #
+    40   -0.023                  0.00   -#
+  --------------------------------------------------------------
+  t naive -4.37    t Newey-West -4.18    t non-overlap -0.98
+
+  VERDICT: lag-1 autocorrelation is near zero, so the overlap is
+  NOT driving the daily variation. The naive standard error is
+  appropriate and Newey-West agrees with it. The non-overlapping
+  figure is over-conservative here by construction and should
+  not be used.

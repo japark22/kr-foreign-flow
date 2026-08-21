@@ -1,0 +1,20 @@
+
+Loading panels...
+dates 2010-01-04 -> 2026-08-19   observations kept 7,426,708
+
+========================================================================================
+     h    mean IC   t naive     t NW  t non-ov   AC(1)   days   n/ov   verdict
+  ------------------------------------------------------------------------------------
+     1   +0.00390     +3.90    +3.90     +3.90   +0.02   3351   3351   survives correction
+     5   -0.00031     -0.32    -0.32     -0.14   +0.01   3348    670   not significant either way
+    20   -0.00392     -4.37    -4.18     -0.98   -0.03   3333    167   survives correction
+    60   -0.00466     -5.76    -4.56     -0.75   +0.01   3303     56   survives correction
+  ------------------------------------------------------------------------------------
+  t naive is what 04_validate.py and the README report. It is only
+  valid at h=1, where the forward windows do not overlap.
+  The verdict uses t non-ov, which --selftest shows is the only one
+  of the three calibrated near 5% under a known null. t NW is shown
+  because it is the conventional fix, not because it is the best one
+  here -- it still over-rejects at these horizons.
+  AC(1) is the lag-1 autocorrelation of the daily IC series: the
+  larger it is, the more the naive standard error understates.

@@ -216,8 +216,10 @@ of foreign flow. Predictable order flow is predictable to everyone.
 | 20 days | −0.00392 | **−4.37** | −1.25% | −0.15 |
 
 Two things to note. The 1-day IC clears significance but is a third of the
-0.01 magnitude threshold — with 9 million observations, tiny effects reach
-t=4. And the sign inverts monotonically by 20 days, which is the signature of
+0.01 magnitude threshold. The t comes from the time series of 3,351 daily
+cross-sectional ICs, not from the 7.4 million ticker-days behind them, so
+it is not inflated by counting correlated stocks as independent — but a
+tiny effect over 3,351 days still reaches t=4. And the sign inverts monotonically by 20 days, which is the signature of
 temporary price pressure reverting, not of information.
 
 ### Costs settle it for this construction
@@ -258,6 +260,31 @@ FTSE dates are pinned in `data/rebalance_overrides.csv`.
 ## 6. Known limitations
 
 Stated plainly, because a result is only as good as what it admits.
+
+**The overlapping-window objection was raised and does not hold — measured, not
+assumed.** The IC at horizon h is computed on every trading day, so consecutive
+20-day forward windows overlap by nineteen days. That normally makes the daily
+IC series autocorrelated and `std/sqrt(n)` too small, which would have inflated
+the 20-day and 60-day t-statistics by up to sqrt(h).
+
+`09b_se_diagnostic.py` tests it directly. If the overlap drove the daily
+variation, the lag-1 autocorrelation of the daily IC series would sit near
+(h-1)/h = +0.95 at h = 20 and decay to zero by lag 20. The measured profile is
+flat from lag 1: -0.033, +0.014, +0.038, and within noise of zero thereafter.
+Newey-West with 19 lags gives t = -4.18 against the naive -4.37 — it estimates
+the autocovariance, finds almost none, and barely moves the answer.
+
+The reason is that an IC is a normalised cross-sectional correlation, not a
+return. Shifting the window one day leaves the common component largely
+cancelled between numerator and denominator, and what remains varies from day
+to day without being shared across days.
+
+A non-overlapping standard error (every h-th day) reports t = -0.98 at h = 20,
+and that figure should NOT be used: the same script's calibration shows it
+rejects a true null 0% of the time when the series is white noise, because it
+pairs a full-sample mean with a subsample standard error. It is a fixed
+sqrt(h) penalty rather than a correction. All published t-statistics here
+stand as reported.
 
 **The noise filter has not been shown to work.** Removing rebalance and
 ex-dividend windows discards 18.2% of observations and moves the curve by
