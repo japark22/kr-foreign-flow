@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Korean Foreign-Ownership Flow &mdash; results</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{--ground:#F4F6F9;--surface:#FFFFFF;--surface-2:#EDF0F5;--ink:#0F1520;
+--ink-soft:#59647A;--ink-faint:#8A93A5;--rule:#DCE1EA;--rule-soft:#E9EDF3;
+--accent:#2F63C4;--hot:#C0392B;--ok:#1F6F4A;--warn:#8A6A16}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--ground:#0D1117;--surface:#151B24;--surface-2:#1B222D;--ink:#E4E9F1;
+--ink-soft:#93A0B5;--ink-faint:#6C7889;--rule:#242D3B;--rule-soft:#1E2632;
+--accent:#5F94E6;--hot:#DD6E56;--ok:#5BB98B;--warn:#D2A73F}}
+:root[data-theme="dark"]{--ground:#0D1117;--surface:#151B24;--surface-2:#1B222D;
+--ink:#E4E9F1;--ink-soft:#93A0B5;--ink-faint:#6C7889;--rule:#242D3B;
+--rule-soft:#1E2632;--accent:#5F94E6;--hot:#DD6E56;--ok:#5BB98B;--warn:#D2A73F}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-size:16px;line-height:1.6;
+font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px 88px}
+h1,h2,h3{font-family:Newsreader,Georgia,serif;margin:0;text-wrap:balance}
+h1{font-size:clamp(1.9rem,4.4vw,2.8rem);font-weight:500;line-height:1.14;letter-spacing:-.015em}
+h2{font-size:1.6rem;font-weight:500} h3{font-size:1.1rem;font-weight:600}
+p{margin:0} a{color:var(--accent)}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.14em;
+text-transform:uppercase;color:var(--ink-faint);font-weight:500}
+header{border-bottom:1px solid var(--rule);background:var(--surface);margin-bottom:52px}
+.head-inner{max-width:1000px;margin:0 auto;padding:52px 24px 40px;display:flex;
+flex-direction:column;gap:20px}
+.kicker{display:flex;gap:14px;flex-wrap:wrap;align-items:baseline}
+.lede{max-width:62ch;color:var(--ink-soft);font-size:1.04rem}
+.verdict{padding:18px 20px;border-left:3px solid var(--hot);background:var(--surface-2);
+max-width:62ch;border-radius:0 6px 6px 0}
+section{margin-bottom:56px}
+.sec-head{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.9rem}
+th,td{padding:9px 13px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--rule-soft)}
+th:first-child,td:first-child{text-align:left}
+thead th{font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.09em;
+text-transform:uppercase;color:var(--ink-faint);font-weight:600;background:var(--surface-2);
+border-bottom:1px solid var(--rule)}
+tbody tr:last-child td{border-bottom:none}
+td.num{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+td.soft{color:var(--ink-faint)} td.strong{font-weight:600}
+td.bad{color:var(--hot)} td.zero{color:var(--ink-faint)}
+.tsub{display:block;font-size:.72rem;color:var(--ink-faint);font-weight:400}
+.verdict-cell{text-align:left;white-space:normal;font-size:.83rem;color:var(--ink-soft)}
+.barwrap{display:block;width:110px;height:8px;background:var(--rule-soft);border-radius:99px;
+overflow:hidden}
+.barfill{display:block;height:100%;border-radius:99px}
+.note{font-size:.84rem;color:var(--ink-soft);margin-top:12px;max-width:66ch}
+.absent{font-size:.9rem;color:var(--warn);padding:14px 16px;border:1px dashed var(--rule);
+border-radius:8px;background:var(--surface)}
+.col{max-width:68ch;color:var(--ink-soft)}
+.stack{display:flex;flex-direction:column;gap:18px}
+.flag{background:var(--surface);border:1px solid var(--hot);border-radius:8px;
+padding:20px 22px;display:flex;flex-direction:column;gap:11px}
+.flag h3{color:var(--hot)} .flag p{font-size:.92rem;color:var(--ink-soft);max-width:68ch}
+.stale{color:var(--hot);font-weight:600}
+footer{border-top:1px solid var(--rule);padding-top:22px;font-size:.84rem;color:var(--ink-faint);
+display:flex;flex-direction:column;gap:8px}
+footer table{font-size:.82rem;margin-top:8px}
+@media (max-width:640px){.wrap{padding:0 18px 60px}.head-inner{padding:38px 18px 30px}}
+</style></head><body>
+<header><div class="head-inner">
+<div class="kicker"><span class="eyebrow">Korean equities &middot; 2010-01-04 to 2026-08-21</span><span class="eyebrow">9,079,380 ticker-days</span><span class="eyebrow">Personal project</span></div>
+<h1>Does daily foreign flow predict returns?</h1>
+<p class="lede">Korea publishes foreign ownership per stock every day. The premise
+was that foreign investors digest information more slowly and split larger orders,
+so their flow is persistent, and that a daily disclosure of it is hard to replicate.
+This page is generated from the measurement outputs, so every figure below is the
+one the code last produced.</p>
+<div class="verdict"><strong>The premise is refuted.</strong> Domestic institutional flow is more persistent than foreign flow at lag 1 (ratio <span class='mono'>0.43</span>). Persistence is a property of institutional execution, not of foreign investors, so the foreign disclosure has no special claim on it.</div>
+
+</div></header>
+<div class="wrap"><section><div class="sec-head"><span class="eyebrow">The control group</span><h2>Is the persistence specific to foreign investors?</h2></div><div class="stack"><p class="col">Two hypotheses fit the persistence curve equally well: that foreign flow is special, or that all large institutional flow is persistent because big orders get split over days. The domestic-institution series separates them.</p><div class="scroll"><table><thead><tr><th>lag</th><th>Institutions</th><th>t</th><th></th><th>Foreign</th><th>t</th><th></th><th>ratio f/k</th></tr></thead><tbody><tr><td>1</td><td class="num">+0.2982</td><td class="num soft">+235.9</td><td><span class="barwrap"><span class="barfill" style="width:100.0%;background:var(--hot);margin-left:auto"></span></span></td><td class="num">+0.1295</td><td class="num soft">+95.2</td><td><span class="barwrap"><span class="barfill" style="width:43.4%;background:var(--accent);margin-left:auto"></span></span></td><td class="num strong">0.43</td></tr>
+<tr><td>2</td><td class="num">+0.2241</td><td class="num soft">+199.6</td><td><span class="barwrap"><span class="barfill" style="width:75.2%;background:var(--hot);margin-left:auto"></span></span></td><td class="num">+0.1195</td><td class="num soft">+100.7</td><td><span class="barwrap"><span class="barfill" style="width:40.1%;background:var(--accent);margin-left:auto"></span></span></td><td class="num strong">0.53</td></tr>
+<tr><td>3</td><td class="num">+0.1801</td><td class="num soft">+164.5</td><td><span class="barwrap"><span class="barfill" style="width:60.4%;background:var(--hot);margin-left:auto"></span></span></td><td class="num">+0.0991</td><td class="num soft">+95.5</td><td><span class="barwrap"><span class="barfill" style="width:33.2%;background:var(--accent);margin-left:auto"></span></span></td><td class="num strong">0.55</td></tr>
+<tr><td>5</td><td class="num">+0.1376</td><td class="num soft">+127.4</td><td><span class="barwrap"><span class="barfill" style="width:46.1%;background:var(--hot);margin-left:auto"></span></span></td><td class="num">+0.0780</td><td class="num soft">+80.9</td><td><span class="barwrap"><span class="barfill" style="width:26.2%;background:var(--accent);margin-left:auto"></span></span></td><td class="num strong">0.57</td></tr>
+<tr><td>10</td><td class="num">+0.0951</td><td class="num soft">+96.9</td><td><span class="barwrap"><span class="barfill" style="width:31.9%;background:var(--hot);margin-left:auto"></span></span></td><td class="num">+0.0527</td><td class="num soft">+61.0</td><td><span class="barwrap"><span class="barfill" style="width:17.7%;background:var(--accent);margin-left:auto"></span></span></td><td class="num strong">0.55</td></tr>
+<tr><td>20</td><td class="num">+0.0603</td><td class="num soft">+62.2</td><td><span class="barwrap"><span class="barfill" style="width:20.2%;background:var(--hot);margin-left:auto"></span></span></td><td class="num">+0.0284</td><td class="num soft">+35.3</td><td><span class="barwrap"><span class="barfill" style="width:9.5%;background:var(--accent);margin-left:auto"></span></span></td><td class="num strong">0.47</td></tr></tbody></table></div></div></section><section><div class="sec-head"><span class="eyebrow">Return prediction and costs</span><h2>Does it predict price, and can it be traded?</h2></div><div class="scroll"><table><thead><tr><th>horizon</th><th>mean IC</th><th>t</th><th>days</th><th>gross/yr</th><th>turnover</th><th>net/yr</th></tr></thead><tbody><tr><td>1d</td><td class="num">+0.00392</td><td class="num">+3.92</td><td class="num soft">3,352</td><td class="num">+6.25%</td><td class="num soft">319.9x</td><td class="num bad">-89.72%</td></tr>
+<tr><td>5d</td><td class="num">-0.00031</td><td class="num">-0.32</td><td class="num soft">3,348</td><td class="num">-0.52%</td><td class="num soft">64.0x</td><td class="num bad">-19.71%</td></tr>
+<tr><td>20d</td><td class="num">-0.00392</td><td class="num">-4.37</td><td class="num soft">3,333</td><td class="num">-1.25%</td><td class="num soft">16.0x</td><td class="num bad">-6.05%</td></tr></tbody></table></div><p class="note">Net is after 30bp one-way, applied to the measured turnover of both legs.</p></section><section><div class="sec-head"><span class="eyebrow">Where the effect lives</span><h2>Information coefficient by horizon and liquidity</h2></div><div class="scroll"><table><thead><tr><th>horizon</th><th>Thin third</th><th></th><th>Middle</th><th></th><th>Liquid third</th><th></th></tr></thead><tbody><tr><td>1d</td><td class="num">+0.00919<span class="tsub">t +7.26</span></td><td><span class="barwrap"><span class="barfill" style="width:100.0%;background:var(--accent);margin-left:auto"></span></span></td><td class="num">+0.00695<span class="tsub">t +7.36</span></td><td><span class="barwrap"><span class="barfill" style="width:75.6%;background:var(--accent);margin-left:auto"></span></span></td><td class="num zero">+0.00066<span class="tsub">t +0.69</span></td><td><span class="barwrap"><span class="barfill" style="width:7.2%;background:var(--accent);margin-left:auto"></span></span></td></tr>
+<tr><td>5d</td><td class="num">+0.00598<span class="tsub">t +3.96</span></td><td><span class="barwrap"><span class="barfill" style="width:65.0%;background:var(--accent);margin-left:auto"></span></span></td><td class="num">+0.00337<span class="tsub">t +3.30</span></td><td><span class="barwrap"><span class="barfill" style="width:36.7%;background:var(--accent);margin-left:auto"></span></span></td><td class="num">-0.00416<span class="tsub">t -4.17</span></td><td><span class="barwrap"><span class="barfill" style="width:45.2%;background:var(--hot);margin-right:auto"></span></span></td></tr>
+<tr><td>20d</td><td class="num zero">-0.00090<span class="tsub">t -0.48</span></td><td><span class="barwrap"><span class="barfill" style="width:9.8%;background:var(--hot);margin-right:auto"></span></span></td><td class="num zero">-0.00179<span class="tsub">t -1.54</span></td><td><span class="barwrap"><span class="barfill" style="width:19.5%;background:var(--hot);margin-right:auto"></span></span></td><td class="num">-0.00492<span class="tsub">t -4.44</span></td><td><span class="barwrap"><span class="barfill" style="width:53.5%;background:var(--hot);margin-right:auto"></span></span></td></tr></tbody></table></div><p class="note">Newey-West t beneath each coefficient. A cell greyed out is indistinguishable from zero.</p></section><section><div class="sec-head"><span class="eyebrow">Is the information its own?</span><h2>After residualising against standard factors</h2></div><div class="scroll"><table><thead><tr><th>horizon</th><th>raw IC</th><th>t</th><th>residual IC</th><th>t</th><th>kept</th></tr></thead><tbody><tr><td>1d</td><td class="num">+0.00359</td><td class="num soft">+4.02</td><td class="num">+0.00229</td><td class="num">+3.43</td><td class="num">64%</td></tr>
+<tr><td>5d</td><td class="num">-0.00053</td><td class="num soft">-0.60</td><td class="num">-0.00175</td><td class="num">-2.60</td><td class="num">333%</td></tr>
+<tr><td>20d</td><td class="num">-0.00464</td><td class="num soft">-5.16</td><td class="num">-0.00597</td><td class="num">-8.05</td><td class="num">129%</td></tr></tbody></table></div><p class="note">Residualised each day against size, liquidity, reversal_5d, momentum_60d, momentum_120d, volatility_20d.</p></section><section><div class="sec-head"><span class="eyebrow">The level family</span><h2>What the published t-statistics are actually worth</h2></div><div class="scroll"><table><thead><tr><th>signal</th><th>IC</th><th>t as published</th><th>t Newey-West</th><th>lag-1 AC</th><th>independent obs.</th><th>reading</th></tr></thead><tbody><tr><td>level, 20d</td><td class="num">+0.13307</td><td class="num soft">+47.59</td><td class="num">+13.60</td><td class="num">+0.945</td><td class="num ">131<span class="tsub">of 1,607</span></td><td class="verdict-cell">holds up</td></tr>
+<tr><td>level_z, 20d</td><td class="num">+0.01549</td><td class="num soft">+9.61</td><td class="num">+2.78</td><td class="num">+0.910</td><td class="num ">135<span class="tsub">of 1,607</span></td><td class="verdict-cell">marginal</td></tr>
+<tr><td>d60, 20d</td><td class="num">+0.01002</td><td class="num soft">+7.57</td><td class="num">+2.29</td><td class="num">+0.887</td><td class="num ">147<span class="tsub">of 1,607</span></td><td class="verdict-cell">marginal</td></tr>
+<tr><td>d120, 20d</td><td class="num">+0.01651</td><td class="num soft">+10.97</td><td class="num">+3.14</td><td class="num">+0.917</td><td class="num ">132<span class="tsub">of 1,607</span></td><td class="verdict-cell">holds up</td></tr>
+<tr><td>level, 60d</td><td class="num">+0.17406</td><td class="num soft">+66.34</td><td class="num">+10.87</td><td class="num">+0.975</td><td class="num bad">42<span class="tsub">of 1,567</span></td><td class="verdict-cell">holds up</td></tr>
+<tr><td>level_z, 60d</td><td class="num">+0.01405</td><td class="num soft">+7.93</td><td class="num">+1.28</td><td class="num">+0.957</td><td class="num bad">41<span class="tsub">of 1,567</span></td><td class="verdict-cell">WAS significant, is NOT</td></tr>
+<tr><td>d60, 60d</td><td class="num">+0.01307</td><td class="num soft">+9.51</td><td class="num">+1.68</td><td class="num">+0.936</td><td class="num bad">49<span class="tsub">of 1,567</span></td><td class="verdict-cell">WAS significant, is NOT</td></tr>
+<tr><td>d120, 60d</td><td class="num">+0.01612</td><td class="num soft">+9.36</td><td class="num">+1.48</td><td class="num">+0.967</td><td class="num bad">39<span class="tsub">of 1,567</span></td><td class="verdict-cell">WAS significant, is NOT</td></tr></tbody></table></div><p class="note">A high lag-1 autocorrelation means consecutive daily coefficients are nearly the same number, so the published t counts the same evidence many times over.</p></section><section><div class="sec-head"><span class="eyebrow">The noise filter</span><h2>Do the rule-derived rebalance dates find anything?</h2></div><div class="scroll"><table><thead><tr><th>day</th><th>vs baseline |flow|</th><th></th><th></th></tr></thead><tbody><tr><td class="num">-5</td><td class="num">1.06&times;</td><td><span class="barwrap"><span class="barfill" style="width:91.9%;background:var(--hot);margin-left:auto"></span></span></td><td class="verdict-cell"></td></tr>
+<tr><td class="num">-4</td><td class="num">1.03&times;</td><td><span class="barwrap"><span class="barfill" style="width:50.0%;background:var(--hot);margin-left:auto"></span></span></td><td class="verdict-cell"></td></tr>
+<tr><td class="num">-3</td><td class="num">1.04&times;</td><td><span class="barwrap"><span class="barfill" style="width:63.5%;background:var(--hot);margin-left:auto"></span></span></td><td class="verdict-cell"></td></tr>
+<tr><td class="num">-2</td><td class="num">1.07&times;</td><td><span class="barwrap"><span class="barfill" style="width:96.9%;background:var(--hot);margin-left:auto"></span></span></td><td class="verdict-cell"></td></tr>
+<tr><td class="num">-1</td><td class="num">1.05&times;</td><td><span class="barwrap"><span class="barfill" style="width:66.4%;background:var(--hot);margin-left:auto"></span></span></td><td class="verdict-cell"></td></tr>
+<tr><td class="num">+0</td><td class="num">1.02&times;</td><td><span class="barwrap"><span class="barfill" style="width:28.7%;background:var(--hot);margin-left:auto"></span></span></td><td class="verdict-cell"> &larr; effective date</td></tr>
+<tr><td class="num">+1</td><td class="num">1.07&times;</td><td><span class="barwrap"><span class="barfill" style="width:100.0%;background:var(--hot);margin-left:auto"></span></span></td><td class="verdict-cell"></td></tr>
+<tr><td class="num">+2</td><td class="num">1.04&times;</td><td><span class="barwrap"><span class="barfill" style="width:50.7%;background:var(--hot);margin-left:auto"></span></span></td><td class="verdict-cell"></td></tr>
+<tr><td class="num">+3</td><td class="num">1.03&times;</td><td><span class="barwrap"><span class="barfill" style="width:43.9%;background:var(--hot);margin-left:auto"></span></span></td><td class="verdict-cell"></td></tr>
+<tr><td class="num">+4</td><td class="num">1.02&times;</td><td><span class="barwrap"><span class="barfill" style="width:22.3%;background:var(--hot);margin-left:auto"></span></span></td><td class="verdict-cell"></td></tr>
+<tr><td class="num">+5</td><td class="num">1.02&times;</td><td><span class="barwrap"><span class="barfill" style="width:32.1%;background:var(--hot);margin-left:auto"></span></span></td><td class="verdict-cell"></td></tr></tbody></table></div><p class="note">136 rule-derived effective dates. A calendar that found real events would show a clear hump at zero.</p></section><section><div class="sec-head"><span class="eyebrow">Still open</span><h2>The two series disagree</h2></div><div class="flag"><h3>Two views of the same activity agree at 0.10</h3><p>The signal is a stock measure &mdash; the daily change in foreign shares held. The exchange separately publishes foreign net buying, a flow measure. Across 4,095 overlapping days and 3,615 tickers the mean daily rank correlation is <span class="mono">+0.1046</span>, the tenth percentile is <span class="mono">-0.0037</span> and the worst day is <span class="mono">-0.2352</span>.</p><p>One of the two is not measuring what we assume. Candidates: settlement-date against trade-date convention, securities lending and custody transfers moving holdings without a trade, depositary-receipt conversions, in-kind index creation, and a known misclassification of orders routed through domestic brokers. It does not change the verdict &mdash; there is no edge on either reading &mdash; but it changes what the numbers mean.</p></div></section>
+<footer>
+<p>Generated 2026-08-27 17:33 by
+<span class="mono">13_build_report.py</span> from the files below. No figure on this
+page is entered by hand.</p>
+<div class="scroll"><table><thead><tr><th>source</th><th>produced by</th>
+<th>last written</th><th>state</th></tr></thead><tbody><tr><td class="mono">validate.json</td><td class="mono">04_validate.py</td><td>2026-08-27 17:20</td><td class="">current</td></tr><tr><td class="mono">combination.json</td><td class="mono">12_combination.py</td><td>2026-08-27 11:57</td><td class="">current</td></tr><tr><td class="mono">level_se.json</td><td class="mono">11_level_se.py</td><td>2026-08-27 17:21</td><td class="">current</td></tr></tbody></table></div>
+<p>Code: <a href="https://github.com/japark22/kr-foreign-flow">github.com/japark22/kr-foreign-flow</a>
+&middot; MIT &middot; raw exchange data stays local and out of version control.</p>
+</footer></div></body></html>
