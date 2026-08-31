@@ -29,4 +29,21 @@ if [[ ! -x .venv/bin/python ]]; then
     exit 1
 fi
 
-exec .venv/bin/python 05_daily_update.py "$@"
+.venv/bin/python 05_daily_update.py --with-market "$@"
+
+# Refresh the monitor page from the updated store, then publish it if it
+# changed. The commit carries only the page -- data never leaves the machine.
+.venv/bin/python 14_monitor.py
+
+# The research page is rebuilt on the weekly run only: its inputs are the
+# validation results, which change when a study is re-run, not every day.
+if [[ "$*" == *--report* ]]; then
+    .venv/bin/python 13_build_report.py || echo "  (research page build failed)"
+fi
+
+PAGES=(docs/monitor.html docs/index.html)
+if [[ -n "$(git status --porcelain -- "${PAGES[@]}")" ]]; then
+    git add "${PAGES[@]}"
+    git commit -m "report: scheduled refresh $(date +%Y-%m-%d)"
+    git push
+fi
