@@ -1,0 +1,111 @@
+{
+  "draws": 25,
+  "by_hold": {
+    "20": {
+      "all beats": {
+        "observed": -23.374931272226245,
+        "placebo": -11.089660836989589,
+        "debiased": -12.285270435236656,
+        "per_position_bp": -111.82361297593023,
+        "n_positions": 5911
+      },
+      "quiet beats": {
+        "observed": -16.328545261614654,
+        "placebo": -11.688065050372993,
+        "debiased": -4.640480211241661,
+        "per_position_bp": -104.26843912536506,
+        "n_positions": 2036
+      },
+      "quiet only": {
+        "observed": -13.043106021155051,
+        "placebo": -10.111980829312934,
+        "debiased": -2.931125191842117,
+        "per_position_bp": -146.381141272262,
+        "n_positions": 4580
+      },
+      "crowded beats": {
+        "observed": -23.70516023271237,
+        "placebo": -8.855750994484424,
+        "debiased": -14.849409238227945,
+        "per_position_bp": -123.06894419859614,
+        "n_positions": 2857
+      },
+      "filter_gain": {
+        "raw_diff": 8.235016782969879,
+        "debiased": 7.644790223994995,
+        "per_position_bp": 7.555173850565168
+      }
+    },
+    "40": {
+      "all beats": {
+        "observed": -18.048543336634864,
+        "placebo": -6.322261158748456,
+        "debiased": -11.726282177886407,
+        "per_position_bp": -207.92465925418304,
+        "n_positions": 5904
+      },
+      "quiet beats": {
+        "observed": -13.61337349502205,
+        "placebo": -9.33794013565954,
+        "debiased": -4.275433359362509,
+        "per_position_bp": -153.04428371445636,
+        "n_positions": 2035
+      },
+      "quiet only": {
+        "observed": -19.603387895068604,
+        "placebo": -9.990569205471484,
+        "debiased": -9.61281868959712,
+        "per_position_bp": -225.96619009919027,
+        "n_positions": 4572
+      },
+      "crowded beats": {
+        "observed": -19.148891222941135,
+        "placebo": -6.729925434262459,
+        "debiased": -12.418965788678676,
+        "per_position_bp": -244.78090648219583,
+        "n_positions": 2853
+      },
+      "filter_gain": {
+        "raw_diff": 4.7299561414988585,
+        "debiased": 7.450848818523898,
+        "per_position_bp": 54.880375539726685
+      }
+    },
+    "60": {
+      "all beats": {
+        "observed": -15.215474388375295,
+        "placebo": -4.416649680373127,
+        "debiased": -10.798824708002169,
+        "per_position_bp": -302.8159655590582,
+        "n_positions": 5901
+      },
+      "quiet beats": {
+        "observed": -13.4394864624029,
+        "placebo": -4.690285505974414,
+        "debiased": -8.749200956428487,
+        "per_position_bp": -226.49895785873096,
+        "n_positions": 2032
+      },
+      "quiet only": {
+        "observed": -16.379356154638177,
+        "placebo": -4.609659714544825,
+        "debiased": -11.769696440093352,
+        "per_position_bp": -313.4316884398958,
+        "n_positions": 4569
+      },
+      "crowded beats": {
+        "observed": -16.84707587565591,
+        "placebo": -3.5257965391487134,
+        "debiased": -13.321279336507198,
+        "per_position_bp": -359.42407450974963,
+        "n_positions": 2851
+      },
+      "filter_gain": {
+        "raw_diff": 2.0476975638548054,
+        "debiased": 2.049623751573682,
+        "per_position_bp": 76.31700770032725
+      }
+    }
+  },
+  "verdict": "FILTER POSITIVE AT EVERY HOLD"
+}

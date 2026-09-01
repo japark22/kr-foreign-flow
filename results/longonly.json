@@ -1,0 +1,100 @@
+{
+  "hold": 40,
+  "cost_rt": 0.005,
+  "rules": {
+    "all beats": {
+      "picks": 5927,
+      "avg_book": 113.32695984703633,
+      "full": {
+        "days": 2092,
+        "ann_pct": -3.666619743756414,
+        "season_t": -1.4634233505920184,
+        "seasons": 35
+      },
+      "first_half": {
+        "days": 1105,
+        "ann_pct": -9.481806391008812,
+        "season_t": -2.747795047809446,
+        "seasons": 18
+      },
+      "second_half": {
+        "days": 987,
+        "ann_pct": 2.8437969180611105,
+        "season_t": 0.1310291518637526,
+        "seasons": 17
+      }
+    },
+    "quiet beats": {
+      "picks": 2044,
+      "avg_book": 39.36446798266731,
+      "full": {
+        "days": 2077,
+        "ann_pct": 1.1559982073923738,
+        "season_t": 0.0036775209154934455,
+        "seasons": 35
+      },
+      "first_half": {
+        "days": 1090,
+        "ann_pct": -10.044293161962795,
+        "season_t": -2.1344174860999026,
+        "seasons": 18
+      },
+      "second_half": {
+        "days": 987,
+        "ann_pct": 13.525114309314498,
+        "season_t": 1.7912266664543521,
+        "seasons": 17
+      }
+    },
+    "quiet only": {
+      "picks": 4595,
+      "avg_book": 87.8585086042065,
+      "full": {
+        "days": 2092,
+        "ann_pct": -5.381038476872664,
+        "season_t": -1.2622718377539348,
+        "seasons": 35
+      },
+      "first_half": {
+        "days": 1105,
+        "ann_pct": -12.35482296481486,
+        "season_t": -3.94396847329144,
+        "seasons": 18
+      },
+      "second_half": {
+        "days": 987,
+        "ann_pct": 2.426491268999805,
+        "season_t": 0.7072860724337978,
+        "seasons": 17
+      }
+    },
+    "crowded beats": {
+      "picks": 2863,
+      "avg_book": 54.74187380497132,
+      "full": {
+        "days": 2092,
+        "ann_pct": -4.64947792608415,
+        "season_t": -1.145645780945176,
+        "seasons": 35
+      },
+      "first_half": {
+        "days": 1105,
+        "ann_pct": -8.68639301191267,
+        "season_t": -2.522317662195438,
+        "seasons": 18
+      },
+      "second_half": {
+        "days": 987,
+        "ann_pct": -0.12993266788707278,
+        "season_t": 0.20925688322386432,
+        "seasons": 17
+      }
+    }
+  },
+  "filter_value": {
+    "ann_pct": 5.0234245739855705,
+    "season_t": 2.0875957861892287,
+    "seasons": 35
+  },
+  "verdict": "NOT USABLE AS A LONG-ONLY RULE"
+}

@@ -18,6 +18,7 @@ the market store, so run `01_backfill.py --with-market` first for those.
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 
 import numpy as np
@@ -26,6 +27,11 @@ import pandas as pd
 from krxflow import features, rebalance, storage
 
 W = 78
+
+# Machine-readable results. Every number the report page shows is written here
+# by the measurement that produced it, so the page can never drift from the
+# code: there is no step where a figure is copied by hand.
+RESULTS = {"schema": 1}
 
 
 def rule(title: str = "") -> None:
@@ -74,6 +80,10 @@ def autocorrelation(ranked: pd.DataFrame, max_lag: int, label: str) -> pd.Series
                        if len(daily) > 2 and daily.std(ddof=1) > 0 else float("nan"))
 
     s = pd.Series(means, name=label)
+    RESULTS.setdefault("autocorrelation", {})[label] = {
+        "mean": {int(k): float(v) for k, v in s.items()},
+        "t": {int(k): float(tstats[k]) for k in tstats},
+    }
 
     print(f"\n  {label}")
     print("  lag    corr     t-stat    -0.2         0        +0.2")
@@ -213,6 +223,9 @@ def main() -> int:
         if not vals:
             continue
         rel = float(np.mean(vals)) / baseline
+        RESULTS.setdefault("rebalance_profile", {})[str(k)] = rel
+        RESULTS["rebalance_baseline"] = float(baseline)
+        RESULTS["rebalance_dates"] = int(len(eff_dates))
         marker = "  <- effective date" if k == 0 else ""
         print(f"  {k:>+16}   {rel:>15.2f}x  {'#' * max(0, int((rel - 1) * 40))}{marker}")
 
@@ -269,7 +282,13 @@ def main() -> int:
                 print(f"  {lag:>3}   {f.loc[lag]:+.4f}   {k.loc[lag]:>+11.4f}   "
                       f"{ratio:>9.2f}")
 
-            near = abs(f.loc[1] - k.loc[1]) < 0.25 * max(abs(f.loc[1]), 1e-9)
+            # The earlier version tested only whether the two curves DIFFER and
+            # then announced that foreign flow was the more persistent one. It
+            # never looked at which way the difference went. On the real data
+            # institutional flow is roughly twice as persistent as foreign flow
+            # at every lag, and that branch printed the opposite of the finding.
+            gap = f.loc[1] - k.loc[1]
+            near = abs(gap) < 0.25 * max(abs(f.loc[1]), 1e-9)
             print()
             if near:
                 print("  The two are close. H2 is the better-supported reading:")
@@ -277,11 +296,19 @@ def main() -> int:
                 print("  general, not something foreign investors do uniquely.")
                 print("  That does not kill the feature, but it does mean the")
                 print("  pitch cannot be \"foreign flow is special\".")
+            elif gap > 0:
+                print("  Foreign flow is materially MORE persistent than domestic")
+                print("  institutional flow. That is what H1 predicts and what")
+                print("  would make Korea's disclosure a real edge.")
             else:
-                print("  The two differ materially. Foreign flow carries")
-                print("  persistence that domestic institutional flow does not,")
-                print("  which is what H1 predicts and what would make Korea's")
-                print("  disclosure a real edge.")
+                print("  Domestic institutional flow is materially MORE persistent")
+                print(f"  than foreign flow (ratio f/k = {f.loc[1]/k.loc[1]:.2f} at lag 1).")
+                print("  H1 is refuted, and more strongly than H2 would have been:")
+                print("  the premise was that foreign investors are slower to digest")
+                print("  information and split larger orders. Domestic institutions")
+                print("  do more of it. Persistence is a property of institutional")
+                print("  execution, not of foreign investors, so the daily foreign")
+                print("  disclosure has no special claim on it.")
 
         # Cross-check: our stock-based signal against the reported flow.
         if "외국인" in inv:
@@ -300,6 +327,11 @@ def main() -> int:
                 daily = a.corrwith(b, axis=1).dropna()
                 print(f"  overlapping days    : {len(common_d):,}")
                 print(f"  overlapping tickers : {len(common_t):,}")
+                RESULTS["stock_vs_flow"] = {
+                    "mean_rank_corr": float(daily.mean()),
+                    "p10": float(daily.quantile(0.10)),
+                    "worst": float(daily.min()),
+                    "days": int(len(common_d)), "tickers": int(len(common_t))}
                 print(f"  mean daily rank corr: {daily.mean():+.4f}")
                 print(f"  10th percentile     : {daily.quantile(0.10):+.4f}")
                 print(f"  worst day           : {daily.min():+.4f}")
@@ -352,6 +384,9 @@ def main() -> int:
         t = ic.mean() / (ic.std(ddof=1) / np.sqrt(len(ic)))
         ir = ic.mean() / ic.std(ddof=1) * np.sqrt(252 / h)
         ic_table[h] = ic
+        RESULTS.setdefault("horizon_ic", {})[str(h)] = {
+            "mean_ic": float(ic.mean()), "std": float(ic.std(ddof=1)),
+            "t": float(t), "ir": float(ir), "days": int(len(ic))}
         print(f"  {h:>5}d   {ic.mean():+.5f}   {ic.std(ddof=1):.4f}   "
               f"{t:>+8.2f}   {ir:>+8.2f}")
 
@@ -410,6 +445,11 @@ def main() -> int:
         # both legs, one-way each side of the switch
         ann_turn = turnover[h] * rebals * 2
         cost = ann_turn * COST_ONE_WAY
+        RESULTS.setdefault("costs", {})[str(h)] = {
+            "turnover_per_rebalance": float(turnover[h]),
+            "annual_turnover": float(ann_turn), "gross": float(gross[h]),
+            "cost": float(cost), "net": float(gross[h] - cost),
+            "cost_one_way": COST_ONE_WAY}
         print(f"  {h:>5}d   {turnover[h]:>13.1%}   {ann_turn:>14.1f}x   "
               f"{gross[h]:>+5.2%}   {cost:>9.2%}   {gross[h] - cost:>+6.2%}")
 
@@ -428,6 +468,7 @@ def main() -> int:
     for lb in (5, 20, 60, 120):
         mom = features.cross_sectional_rank(close.pct_change(lb, fill_method=None))
         c = signal.corrwith(mom, axis=1).mean()
+        RESULTS.setdefault("momentum_corr", {})[str(lb)] = float(c)
         print(f"  {lb:>15}d   {c:>+20.4f}")
 
     print("\n  Above ~0.3 in absolute terms would mean substantial overlap and")
@@ -443,6 +484,15 @@ def main() -> int:
     print("\n  Caveats standing: rebalance dates are rule-derived; ex-dividend")
     print("  effects are NOT yet removed (needs OpenDART); free float is")
     print("  approximated by shares outstanding.")
+
+    RESULTS["window"] = [str(pct.index[0].date()), str(pct.index[-1].date())]
+    RESULTS["days"] = int(len(pct))
+    RESULTS["tickers"] = int(universe.any().sum())
+    RESULTS["observations"] = int(flow_raw.notna().to_numpy().sum())
+    dest = storage.config.DATA_DIR.parent / "results" / "validate.json"
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    dest.write_text(json.dumps(RESULTS, indent=2, default=float), encoding="utf-8")
+    print(f"\n  wrote {dest.relative_to(storage.config.DATA_DIR.parent)}")
     return 0
 
 

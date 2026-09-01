@@ -1,0 +1,329 @@
+{
+  "holds": [
+    20,
+    40,
+    60
+  ],
+  "cost_rt": 0.005,
+  "by_hold": {
+    "20": {
+      "all beats": {
+        "avg_book": 57.21042471042471,
+        "full": {
+          "days": 2072,
+          "ann_pct": -23.374931272226245,
+          "season_t": -7.168591754288357,
+          "seasons": 34
+        },
+        "first_half": {
+          "days": 1105,
+          "ann_pct": -24.77430946684578,
+          "season_t": -5.075135500216494,
+          "seasons": 18
+        },
+        "second_half": {
+          "days": 967,
+          "ann_pct": -21.775848640318703,
+          "season_t": -5.959772382889484,
+          "seasons": 16
+        }
+      },
+      "quiet beats": {
+        "avg_book": 22.07343412526998,
+        "full": {
+          "days": 1852,
+          "ann_pct": -16.328545261614654,
+          "season_t": -2.896601335203458,
+          "seasons": 34
+        },
+        "first_half": {
+          "days": 946,
+          "ann_pct": -24.802559264282394,
+          "season_t": -3.8946411985746905,
+          "seasons": 18
+        },
+        "second_half": {
+          "days": 906,
+          "ann_pct": -7.480402605407501,
+          "season_t": -0.8130720994130635,
+          "seasons": 16
+        }
+      },
+      "quiet only": {
+        "avg_book": 45.881178232651024,
+        "full": {
+          "days": 2003,
+          "ann_pct": -13.043106021155051,
+          "season_t": -1.5495663516502292,
+          "seasons": 34
+        },
+        "first_half": {
+          "days": 1060,
+          "ann_pct": -8.362443764978542,
+          "season_t": -0.6065859592485455,
+          "seasons": 18
+        },
+        "second_half": {
+          "days": 943,
+          "ann_pct": -18.304507920992915,
+          "season_t": -3.3380668218743645,
+          "seasons": 16
+        }
+      },
+      "crowded beats": {
+        "avg_book": 27.635135135135137,
+        "full": {
+          "days": 2072,
+          "ann_pct": -23.70516023271237,
+          "season_t": -5.785450933387391,
+          "seasons": 34
+        },
+        "first_half": {
+          "days": 1105,
+          "ann_pct": -22.80532815983508,
+          "season_t": -4.205357951202621,
+          "seasons": 18
+        },
+        "second_half": {
+          "days": 967,
+          "ann_pct": -24.733406810302245,
+          "season_t": -4.371135803674222,
+          "seasons": 16
+        }
+      },
+      "filter_gain": {
+        "full": {
+          "days": 1852,
+          "ann_pct": 8.235016782969879,
+          "season_t": 1.2858816720866717,
+          "seasons": 34
+        },
+        "first_half": {
+          "days": 946,
+          "ann_pct": 0.7280576330620219,
+          "season_t": 0.02380386373742986,
+          "seasons": 18
+        },
+        "second_half": {
+          "days": 906,
+          "ann_pct": 16.073409007928863,
+          "season_t": 1.6114063615556364,
+          "seasons": 16
+        }
+      }
+    },
+    "40": {
+      "all beats": {
+        "avg_book": 113.32695984703633,
+        "full": {
+          "days": 2092,
+          "ann_pct": -18.048543336634864,
+          "season_t": -9.063761702507149,
+          "seasons": 35
+        },
+        "first_half": {
+          "days": 1105,
+          "ann_pct": -15.707984638468364,
+          "season_t": -5.134809171407608,
+          "seasons": 18
+        },
+        "second_half": {
+          "days": 987,
+          "ann_pct": -20.668925668422084,
+          "season_t": -9.692851091576,
+          "seasons": 17
+        }
+      },
+      "quiet beats": {
+        "avg_book": 39.36446798266731,
+        "full": {
+          "days": 2077,
+          "ann_pct": -13.61337349502205,
+          "season_t": -4.284498284643917,
+          "seasons": 35
+        },
+        "first_half": {
+          "days": 1090,
+          "ann_pct": -15.427098666292952,
+          "season_t": -3.4731519247164937,
+          "seasons": 18
+        },
+        "second_half": {
+          "days": 987,
+          "ann_pct": -11.610374065756304,
+          "season_t": -2.6174915895829862,
+          "seasons": 17
+        }
+      },
+      "quiet only": {
+        "avg_book": 87.8585086042065,
+        "full": {
+          "days": 2092,
+          "ann_pct": -19.603387895068604,
+          "season_t": -5.477728881692186,
+          "seasons": 35
+        },
+        "first_half": {
+          "days": 1105,
+          "ann_pct": -17.340664703928546,
+          "season_t": -6.565299368041122,
+          "seasons": 18
+        },
+        "second_half": {
+          "days": 987,
+          "ann_pct": -22.136629157692475,
+          "season_t": -3.0347059266670224,
+          "seasons": 17
+        }
+      },
+      "crowded beats": {
+        "avg_book": 54.74187380497132,
+        "full": {
+          "days": 2092,
+          "ann_pct": -19.148891222941135,
+          "season_t": -5.816854503116327,
+          "seasons": 35
+        },
+        "first_half": {
+          "days": 1105,
+          "ann_pct": -15.417325072947616,
+          "season_t": -4.85273413707928,
+          "seasons": 18
+        },
+        "second_half": {
+          "days": 987,
+          "ann_pct": -23.326581796135503,
+          "season_t": -4.018746874902637,
+          "seasons": 17
+        }
+      },
+      "filter_gain": {
+        "full": {
+          "days": 2077,
+          "ann_pct": 4.7299561414988585,
+          "season_t": 1.9476677543173078,
+          "seasons": 35
+        },
+        "first_half": {
+          "days": 1090,
+          "ann_pct": 0.810393095469729,
+          "season_t": 0.3273410096800402,
+          "seasons": 18
+        },
+        "second_half": {
+          "days": 987,
+          "ann_pct": 9.05855160266578,
+          "season_t": 2.257846029075184,
+          "seasons": 17
+        }
+      }
+    },
+    "60": {
+      "all beats": {
+        "avg_book": 168.3806818181818,
+        "full": {
+          "days": 2112,
+          "ann_pct": -15.215474388375295,
+          "season_t": -8.531086654403856,
+          "seasons": 35
+        },
+        "first_half": {
+          "days": 1105,
+          "ann_pct": -14.437107214468496,
+          "season_t": -5.276173904324715,
+          "seasons": 18
+        },
+        "second_half": {
+          "days": 1007,
+          "ann_pct": -16.069591297180665,
+          "season_t": -7.359200819399502,
+          "seasons": 17
+        }
+      },
+      "quiet beats": {
+        "avg_book": 58.483547925608015,
+        "full": {
+          "days": 2097,
+          "ann_pct": -13.4394864624029,
+          "season_t": -5.719359009454499,
+          "seasons": 35
+        },
+        "first_half": {
+          "days": 1090,
+          "ann_pct": -15.129980123954478,
+          "season_t": -4.245504843624289,
+          "seasons": 18
+        },
+        "second_half": {
+          "days": 1007,
+          "ann_pct": -11.6096571763143,
+          "season_t": -4.029295687513754,
+          "seasons": 17
+        }
+      },
+      "quiet only": {
+        "avg_book": 130.53977272727272,
+        "full": {
+          "days": 2112,
+          "ann_pct": -16.379356154638177,
+          "season_t": -8.177481182481877,
+          "seasons": 35
+        },
+        "first_half": {
+          "days": 1105,
+          "ann_pct": -15.999773096761615,
+          "season_t": -6.509011918108449,
+          "seasons": 18
+        },
+        "second_half": {
+          "days": 1007,
+          "ann_pct": -16.795879768296178,
+          "season_t": -5.285581680432315,
+          "seasons": 17
+        }
+      },
+      "crowded beats": {
+        "avg_book": 81.33522727272727,
+        "full": {
+          "days": 2112,
+          "ann_pct": -16.84707587565591,
+          "season_t": -7.686743648305923,
+          "seasons": 35
+        },
+        "first_half": {
+          "days": 1105,
+          "ann_pct": -14.348812990630307,
+          "season_t": -4.796002296698956,
+          "seasons": 18
+        },
+        "second_half": {
+          "days": 1007,
+          "ann_pct": -19.588466628340406,
+          "season_t": -6.805119553026424,
+          "seasons": 17
+        }
+      },
+      "filter_gain": {
+        "full": {
+          "days": 2097,
+          "ann_pct": 2.0476975638548054,
+          "season_t": 1.522408481364879,
+          "seasons": 35
+        },
+        "first_half": {
+          "days": 1090,
+          "ann_pct": -0.18085492505404369,
+          "season_t": -0.14255337798067905,
+          "seasons": 18
+        },
+        "second_half": {
+          "days": 1007,
+          "ann_pct": 4.459934120866368,
+          "season_t": 2.15623404247098,
+          "seasons": 17
+        }
+      }
+    }
+  },
+  "verdict": "NOT ESTABLISHED"
+}
