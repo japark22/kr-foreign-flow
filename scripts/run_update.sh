@@ -35,15 +35,27 @@ fi
 # changed. The commit carries only the page -- data never leaves the machine.
 .venv/bin/python 14_monitor.py
 
-# The research page is rebuilt on the weekly run only: its inputs are the
-# validation results, which change when a study is re-run, not every day.
-if [[ "$*" == *--report* ]]; then
+# Rebuilt on the weekly run, and whenever the page is missing: a build that
+# failed once must not leave the site without its research page.
+if [[ "$*" == *--report* || ! -f docs/index.html ]]; then
     .venv/bin/python 13_build_report.py || echo "  (research page build failed)"
 fi
 
-PAGES=(docs/monitor.html docs/index.html)
-if [[ -n "$(git status --porcelain -- "${PAGES[@]}")" ]]; then
-    git add "${PAGES[@]}"
-    git commit -m "report: scheduled refresh $(date +%Y-%m-%d)"
-    git push
+# Publish whichever pages are actually on disk. Naming a missing file here
+# once staged its deletion and removed the page from the site, then aborted
+# every later run before the commit -- so absent means skip, never stage.
+PAGES=()
+for page in docs/monitor.html docs/index.html; do
+    [[ -f "$page" ]] && PAGES+=("$page")
+done
+
+if [[ ${#PAGES[@]} -eq 0 ]]; then
+    echo "  no pages on disk to publish"
+elif [[ -n "$(git status --porcelain -- "${PAGES[@]}")" ]]; then
+    git add -- "${PAGES[@]}"
+    if git commit -m "report: scheduled refresh $(date +%Y-%m-%d)"; then
+        git push || echo "  push failed -- page committed, not published"
+    fi
+else
+    echo "  pages unchanged"
 fi
