@@ -6,3 +6,5 @@ __pycache__/
 venv/
 .DS_Store
 *.parquet.tmp
+results/decompose_panel.parquet
+results/*.parquet

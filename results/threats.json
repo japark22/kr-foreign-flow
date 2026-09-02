@@ -1,0 +1,91 @@
+{
+  "calendar": {
+    "days": 2123,
+    "reviews": 35,
+    "december": 8,
+    "review_pad": 10,
+    "dec_pad": [
+      10,
+      5
+    ]
+  },
+  "all": {
+    "bp": -61.946762571467254,
+    "t": -2.708431133795608,
+    "events": 11486,
+    "seasons": 34
+  },
+  "size": {
+    "large (top third)": {
+      "bp": -48.04601332346481,
+      "t": -1.755635643344004,
+      "events": 3926,
+      "seasons": 34
+    },
+    "mid": {
+      "bp": -44.721848503299995,
+      "t": -0.965797977263639,
+      "events": 3205,
+      "seasons": 34
+    },
+    "small (bottom third)": {
+      "bp": -43.98731603493636,
+      "t": -1.0934276248321941,
+      "events": 2509,
+      "seasons": 34
+    }
+  },
+  "review": {
+    "outside": {
+      "bp": -51.94469038523602,
+      "t": -2.6628965740822976,
+      "events": 10955,
+      "seasons": 34
+    },
+    "inside": {
+      "bp": -263.13298623266314,
+      "t": -1.7829547289261543,
+      "events": 531,
+      "seasons": 21
+    }
+  },
+  "december": {
+    "outside": {
+      "bp": -63.85839995074484,
+      "t": -2.8861705007421734,
+      "events": 10363,
+      "seasons": 34
+    },
+    "inside": {
+      "bp": -86.22118795678364,
+      "t": -1.2467230349620806,
+      "events": 1123,
+      "seasons": 8
+    }
+  },
+  "wave": {
+    "off": {
+      "bp": -50.95850768321081,
+      "t": -2.3210711063859044,
+      "events": 10794,
+      "seasons": 34
+    },
+    "on": {
+      "bp": -216.7746611416918,
+      "t": -2.9333519632615497,
+      "events": 692,
+      "seasons": 27
+    }
+  },
+  "strict": {
+    "bp": -46.517322865444,
+    "t": -2.2230324018033922,
+    "events": 9281,
+    "seasons": 34
+  },
+  "verdict": "rebalancing cannot be ruled out -- the effect does not survive where index pressure is absent",
+  "gates": {
+    "small_caps": false,
+    "outside_reviews": true
+  }
+}

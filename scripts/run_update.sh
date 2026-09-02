@@ -41,11 +41,24 @@ if [[ "$*" == *--report* || ! -f docs/index.html ]]; then
     .venv/bin/python 13_build_report.py || echo "  (research page build failed)"
 fi
 
+# The event-study page is rebuilt only after the published results file has
+# been reassembled, and 41_publish refuses to write that file when a result
+# is older than the panel it came from. A stale figure therefore cannot reach
+# the page: the build fails first and says so.
+if [[ "$*" == *--report* || ! -f docs/event.html ]]; then
+    if .venv/bin/python 41_publish.py; then
+        .venv/bin/python 42_build_event_page.py \
+            || echo "  (event page build failed)"
+    else
+        echo "  (results are stale -- event page left as it was)"
+    fi
+fi
+
 # Publish whichever pages are actually on disk. Naming a missing file here
 # once staged its deletion and removed the page from the site, then aborted
 # every later run before the commit -- so absent means skip, never stage.
 PAGES=()
-for page in docs/monitor.html docs/index.html; do
+for page in docs/monitor.html docs/index.html docs/event.html; do
     [[ -f "$page" ]] && PAGES+=("$page")
 done
 

@@ -1,180 +1,255 @@
 {
-  "n": 12982,
-  "levels": {
-    "all beats": {
-      "5": {
-        "bp": 4.52853793002316,
-        "t": 0.2882926763376457,
-        "seasons": 34
-      },
-      "20": {
-        "bp": 36.92769823941741,
-        "t": 0.9475228990075123,
-        "seasons": 34
-      },
-      "60": {
-        "bp": 82.0307605079331,
-        "t": 1.102162173479291,
-        "seasons": 34
-      }
-    },
-    "quiet beats": {
-      "5": {
-        "bp": 5.615225674263822,
-        "t": 0.2883735214365369,
-        "seasons": 34
-      },
-      "20": {
-        "bp": 48.374047457682686,
-        "t": 1.2524002265745429,
-        "seasons": 34
-      },
-      "60": {
-        "bp": 171.48619811476178,
-        "t": 1.7693906081295192,
-        "seasons": 34
-      }
-    },
-    "crowded beats": {
-      "5": {
-        "bp": 7.5295023064602145,
-        "t": 0.47694055315936834,
-        "seasons": 34
-      },
-      "20": {
-        "bp": 34.141277070819925,
-        "t": 0.7397659773138419,
-        "seasons": 34
-      },
-      "60": {
-        "bp": 39.520325846940715,
-        "t": 0.5714261705165563,
-        "seasons": 34
-      }
-    },
-    "quiet, any result": {
-      "5": {
-        "bp": -13.118005382508732,
-        "t": -0.9923911308967832,
-        "seasons": 34
-      },
-      "20": {
-        "bp": 10.462758196928709,
-        "t": 0.31852072869175363,
-        "seasons": 34
-      },
-      "60": {
-        "bp": 82.72558907109081,
-        "t": 1.2236392062782713,
-        "seasons": 34
-      }
-    }
+  "generated": "2026-09-02 07:47 UTC",
+  "estimator": {
+    "sample": "provisional filings",
+    "outcome": "abn60, winsorised 1/99 within the day",
+    "regressors": "surprise + c_mom20 + c_mom60 + c_size + c_vol + c_turn + baseline, rank-standardised within the day",
+    "weighting": "one vote per event",
+    "inference": "SE clustered on the reporting season",
+    "min_events_per_day": 5
   },
-  "contrasts": {
-    "quiet beats - all beats": {
-      "5": {
-        "bp": 1.0866877442406606,
-        "t": 0.09388111033007705,
-        "seasons": 34,
-        "halves": [
-          -2.58992693522261,
-          4.76330242370393
-        ]
-      },
-      "20": {
-        "bp": 11.44634921826527,
-        "t": 0.4694233804892244,
-        "seasons": 34,
-        "halves": [
-          4.957871544911596,
-          17.93482689161895
-        ]
-      },
-      "60": {
-        "bp": 89.45543760682871,
-        "t": 2.011732738561569,
-        "seasons": 34,
-        "halves": [
-          58.68777940212088,
-          120.2230958115365
-        ]
-      }
-    },
-    "crowded beats - all beats": {
-      "5": {
-        "bp": 3.0009643764370555,
-        "t": 0.30449585878291924,
-        "seasons": 34,
-        "halves": [
-          8.810109875219776,
-          -2.8081811223456636
-        ]
-      },
-      "20": {
-        "bp": -2.786421168597479,
-        "t": -0.15970604605230174,
-        "seasons": 34,
-        "halves": [
-          2.372403759521571,
-          -7.9452460967165335
-        ]
-      },
-      "60": {
-        "bp": -42.510434660992374,
-        "t": -1.047825177667097,
-        "seasons": 34,
-        "halves": [
-          -15.869901157713786,
-          -69.15096816427099
-        ]
-      }
-    },
-    "quiet - crowded (beats)": {
-      "5": {
-        "bp": -1.9142766321963942,
-        "t": -0.09412299514369792,
-        "seasons": 34,
-        "halves": [
-          -11.400036810442382,
-          7.571483546049595
-        ]
-      },
-      "20": {
-        "bp": 14.232770386862741,
-        "t": 0.3552555569989352,
-        "seasons": 34,
-        "halves": [
-          2.5854677853900165,
-          25.88007298833547
-        ]
-      },
-      "60": {
-        "bp": 131.96587226782108,
-        "t": 1.6034743857828255,
-        "seasons": 34,
-        "halves": [
-          74.55768055983467,
-          189.3740639758075
-        ]
-      }
-    }
+  "coverage": {
+    "events_total": 78574,
+    "provisional": 13956,
+    "periodic": 64618,
+    "first": "2018-01-02",
+    "last": "2026-05-28"
   },
-  "quintile": {
-    "5": {
-      "bp": 3.264631988089765,
-      "t": 0.1656901874130788,
+  "headline": {
+    "institutional_provisional": {
+      "bp": -61.946762571467254,
+      "t": -2.708431133795608,
+      "events": 11486,
       "seasons": 34
     },
-    "20": {
-      "bp": -13.4544870009335,
-      "t": -0.3871343777299522,
+    "institutional_all_events": {
+      "bp": -25.459671517743942,
+      "t": -1.7950449232983874,
+      "events": 58301,
       "seasons": 34
     },
-    "60": {
-      "bp": 41.70042152669867,
-      "t": 0.7146427390788126,
+    "institutional_periodic": {
+      "bp": -19.766608963121683,
+      "t": -1.3068926355882244,
+      "events": 46264,
+      "seasons": 34
+    },
+    "foreign_provisional": {
+      "bp": 21.78895843187086,
+      "t": 1.0566824365528786,
+      "events": 12198,
       "seasons": 34
     }
   },
-  "verdict": "DIRECTIONAL, NOT CONFIRMED"
+  "horizons": {
+    "abn5": {
+      "bp": -6.185232264058075,
+      "t": -0.8356483274905551,
+      "events": 11535,
+      "seasons": 34
+    },
+    "abn20": {
+      "bp": -0.9810276950115543,
+      "t": -0.07525823013035775,
+      "events": 11525,
+      "seasons": 34
+    },
+    "abn60": {
+      "bp": -61.946762571467254,
+      "t": -2.708431133795608,
+      "events": 11486,
+      "seasons": 34
+    }
+  },
+  "halves": {
+    "first": {
+      "bp": -39.86717904138001,
+      "t": -1.7258967205471079,
+      "events": 5535,
+      "seasons": 18
+    },
+    "second": {
+      "bp": -77.68932423709255,
+      "t": -2.131893111616632,
+      "events": 5951,
+      "seasons": 16
+    }
+  },
+  "min_n_sweep": [
+    {
+      "min_n": 5,
+      "bp": -10.526341202206796,
+      "t": -0.1877469376807394,
+      "days": 599
+    },
+    {
+      "min_n": 10,
+      "bp": -80.22364079828145,
+      "t": -2.2699495200779265,
+      "days": 457
+    },
+    {
+      "min_n": 15,
+      "bp": -74.84422938426647,
+      "t": -2.3257306666447803,
+      "days": 351
+    },
+    {
+      "min_n": 25,
+      "bp": -112.29856126096952,
+      "t": -3.301515319217959,
+      "days": 177
+    },
+    {
+      "min_n": 40,
+      "bp": -104.83305471968438,
+      "t": -1.9385593487140453,
+      "days": 37
+    }
+  ],
+  "decomposition": {
+    "bar": 2.9070593234527093,
+    "perm": 200,
+    "types": {
+      "금융투자": {
+        "bp": -15.61344442578023,
+        "t": -0.7182899200915301,
+        "events": 11604,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 0.995
+      },
+      "보험": {
+        "bp": -31.283807454834456,
+        "t": -1.1869725850305004,
+        "events": 10632,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 0.895
+      },
+      "투신": {
+        "bp": -4.231977162733154,
+        "t": -0.21253874721124252,
+        "events": 11535,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 1.0
+      },
+      "사모": {
+        "bp": -12.112552489549254,
+        "t": -0.6756785852291209,
+        "events": 11569,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 0.995
+      },
+      "은행": {
+        "bp": -13.129306961805788,
+        "t": -0.6383103042294278,
+        "events": 9062,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 0.995
+      },
+      "기타금융": {
+        "bp": -15.873132854835555,
+        "t": -0.7042644626078854,
+        "events": 10630,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 0.995
+      },
+      "연기금": {
+        "bp": -64.70858729615234,
+        "t": -2.9484285379527777,
+        "events": 11115,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 0.045
+      },
+      "기타법인": {
+        "bp": 25.22365079949236,
+        "t": 1.2242449242127105,
+        "events": 11604,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 0.88
+      },
+      "개인": {
+        "bp": 35.16197789984545,
+        "t": 1.3485273047850033,
+        "events": 11604,
+        "seasons": 32,
+        "reference": true
+      },
+      "외국인": {
+        "bp": 9.568363618802985,
+        "t": 0.4786403578771235,
+        "events": 11604,
+        "seasons": 32,
+        "reference": true
+      }
+    }
+  },
+  "portfolio": {
+    "beats": 4272,
+    "crowded": {
+      "institutional": {
+        "bp": -47.576294812734744,
+        "t": -1.1799315487253161,
+        "seasons": 32,
+        "positions": 2025
+      },
+      "pension": {
+        "bp": -78.9034644271074,
+        "t": -2.626312801211472,
+        "seasons": 32,
+        "positions": 2025
+      },
+      "placebo": {
+        "bp": -16.38224163248155,
+        "t": -0.4320676447816949,
+        "seasons": 32,
+        "positions": 2025
+      }
+    },
+    "quiet": {
+      "institutional": {
+        "bp": -24.410921909539844,
+        "t": -0.31151403052302024,
+        "seasons": 32,
+        "positions": 789
+      },
+      "pension": {
+        "bp": 27.747337248036594,
+        "t": 0.48650599666444666,
+        "seasons": 32,
+        "positions": 789
+      },
+      "placebo": {
+        "bp": 52.43355304079925,
+        "t": 0.5566597002013091,
+        "seasons": 32,
+        "positions": 789
+      }
+    }
+  },
+  "rejected": [
+    {
+      "claim": "foreign ownership flow predicts post-event returns",
+      "result": "+21.8 bp/SD, t +1.06"
+    },
+    {
+      "claim": "buying the quiet beats earns a premium",
+      "result": "the placebo ranking reads higher than the real one -- the long side is machinery, not signal"
+    },
+    {
+      "claim": "the pension fund is a sharper baseline than the aggregate",
+      "result": "paired season difference -31.3 bp, t -1.47 -- direction consistent, not established at 32 seasons"
+    },
+    {
+      "claim": "the effect holds across filing types",
+      "result": "periodic filings are not significant; the effect is confined to provisional announcements"
+    }
+  ]
 }
