@@ -1,0 +1,381 @@
+{
+  "generated": "2026-09-02 09:03 UTC",
+  "stale_inputs": [],
+  "claim": "On Korean provisional earnings announcements, institutional net buying in the twenty trading days before the announcement predicts the next sixty trading days of size-adjusted return negatively. The usable form is avoidance, not accumulation: among the strongest surprises, those the institutions had already crowded into underperform the rest.",
+  "estimator": {
+    "sample": "provisional filings",
+    "outcome": "abn60, winsorised 1/99 within the day",
+    "regressors": "surprise + c_mom20 + c_mom60 + c_size + c_vol + c_turn + baseline, rank-standardised within the day",
+    "weighting": "one vote per event",
+    "inference": "SE clustered on the reporting season",
+    "min_events_per_day": 5
+  },
+  "coverage": {
+    "events_total": 78574,
+    "provisional": 13956,
+    "periodic": 64618,
+    "first": "2018-01-02",
+    "last": "2026-05-28"
+  },
+  "headline": {
+    "full_sample": {
+      "bp": -61.946762571467254,
+      "t": -2.708431133795608,
+      "events": 11486,
+      "seasons": 34
+    },
+    "after_threats": {
+      "bp": -46.517322865444,
+      "t": -2.2230324018033922,
+      "events": 9281,
+      "seasons": 34
+    },
+    "periodic": {
+      "bp": -19.766608963121683,
+      "t": -1.3068926355882244,
+      "events": 46264,
+      "seasons": 34
+    },
+    "all_events": {
+      "bp": -25.459671517743942,
+      "t": -1.7950449232983874,
+      "events": 58301,
+      "seasons": 34
+    },
+    "foreign": {
+      "bp": 21.78895843187086,
+      "t": 1.0566824365528786,
+      "events": 12198,
+      "seasons": 34
+    }
+  },
+  "horizons": {
+    "abn5": {
+      "bp": -6.185232264058075,
+      "t": -0.8356483274905551,
+      "events": 11535,
+      "seasons": 34
+    },
+    "abn20": {
+      "bp": -0.9810276950115543,
+      "t": -0.07525823013035775,
+      "events": 11525,
+      "seasons": 34
+    },
+    "abn60": {
+      "bp": -61.946762571467254,
+      "t": -2.708431133795608,
+      "events": 11486,
+      "seasons": 34
+    }
+  },
+  "halves": {
+    "first": {
+      "bp": -39.86717904138001,
+      "t": -1.7258967205471079,
+      "events": 5535,
+      "seasons": 18
+    },
+    "second": {
+      "bp": -77.68932423709255,
+      "t": -2.131893111616632,
+      "events": 5951,
+      "seasons": 16
+    }
+  },
+  "why_the_earlier_number_was_larger": {
+    "note": "The retracted -117.7 bp/SD came from weighting each day equally after discarding days carrying fewer than twenty-five announcements. Both choices push the same way; the sweep below is the evidence.",
+    "sweep": [
+      {
+        "min_n": 5,
+        "bp": -10.526341202206796,
+        "t": -0.1877469376807394,
+        "days": 599
+      },
+      {
+        "min_n": 10,
+        "bp": -80.22364079828145,
+        "t": -2.2699495200779265,
+        "days": 457
+      },
+      {
+        "min_n": 15,
+        "bp": -74.84422938426647,
+        "t": -2.3257306666447803,
+        "days": 351
+      },
+      {
+        "min_n": 25,
+        "bp": -112.29856126096952,
+        "t": -3.301515319217959,
+        "days": 177
+      },
+      {
+        "min_n": 40,
+        "bp": -104.83305471968438,
+        "t": -1.9385593487140453,
+        "days": 37
+      }
+    ]
+  },
+  "decomposition": {
+    "bar": 2.9070593234527093,
+    "perm": 200,
+    "types": {
+      "금융투자": {
+        "bp": -15.61344442578023,
+        "t": -0.7182899200915301,
+        "events": 11604,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 0.995
+      },
+      "보험": {
+        "bp": -31.283807454834456,
+        "t": -1.1869725850305004,
+        "events": 10632,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 0.895
+      },
+      "투신": {
+        "bp": -4.231977162733154,
+        "t": -0.21253874721124252,
+        "events": 11535,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 1.0
+      },
+      "사모": {
+        "bp": -12.112552489549254,
+        "t": -0.6756785852291209,
+        "events": 11569,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 0.995
+      },
+      "은행": {
+        "bp": -13.129306961805788,
+        "t": -0.6383103042294278,
+        "events": 9062,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 0.995
+      },
+      "기타금융": {
+        "bp": -15.873132854835555,
+        "t": -0.7042644626078854,
+        "events": 10630,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 0.995
+      },
+      "연기금": {
+        "bp": -64.70858729615234,
+        "t": -2.9484285379527777,
+        "events": 11115,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 0.045
+      },
+      "기타법인": {
+        "bp": 25.22365079949236,
+        "t": 1.2242449242127105,
+        "events": 11604,
+        "seasons": 32,
+        "reference": false,
+        "p_fwer": 0.88
+      },
+      "개인": {
+        "bp": 35.16197789984545,
+        "t": 1.3485273047850033,
+        "events": 11604,
+        "seasons": 32,
+        "reference": true
+      },
+      "외국인": {
+        "bp": 9.568363618802985,
+        "t": 0.4786403578771235,
+        "events": 11604,
+        "seasons": 32,
+        "reference": true
+      }
+    }
+  },
+  "portfolio": {
+    "beats": 4272,
+    "crowded": {
+      "institutional": {
+        "bp": -47.576294812734744,
+        "t": -1.1799315487253161,
+        "seasons": 32,
+        "positions": 2025
+      },
+      "pension": {
+        "bp": -78.9034644271074,
+        "t": -2.626312801211472,
+        "seasons": 32,
+        "positions": 2025
+      },
+      "placebo": {
+        "bp": -16.38224163248155,
+        "t": -0.4320676447816949,
+        "seasons": 32,
+        "positions": 2025
+      }
+    },
+    "quiet": {
+      "institutional": {
+        "bp": -24.410921909539844,
+        "t": -0.31151403052302024,
+        "seasons": 32,
+        "positions": 789
+      },
+      "pension": {
+        "bp": 27.747337248036594,
+        "t": 0.48650599666444666,
+        "seasons": 32,
+        "positions": 789
+      },
+      "placebo": {
+        "bp": 52.43355304079925,
+        "t": 0.5566597002013091,
+        "seasons": 32,
+        "positions": 789
+      }
+    }
+  },
+  "threats": {
+    "interactions": {
+      "plain": {
+        "bp": -61.946762571467254,
+        "t": -2.708431133795608
+      },
+      "size": {
+        "main": {
+          "bp": -65.27286233846532,
+          "t": -2.760960307574705
+        },
+        "interaction": {
+          "bp": 64.34877296763399,
+          "t": 1.1362963307595337
+        }
+      },
+      "review window": {
+        "main": {
+          "bp": -54.074879463545535,
+          "t": -2.6339857716027684
+        },
+        "interaction": {
+          "bp": -172.1013061125777,
+          "t": -1.6256964732309014
+        }
+      },
+      "December": {
+        "main": {
+          "bp": -69.10260443901856,
+          "t": -2.756075158551505
+        },
+        "interaction": {
+          "bp": 74.54471931993669,
+          "t": 1.318429213317258
+        }
+      },
+      "market wave": {
+        "main": {
+          "bp": -51.85437904911506,
+          "t": -2.2703775747156416
+        },
+        "interaction": {
+          "bp": -163.07337721166869,
+          "t": -2.179303167374078
+        }
+      }
+    },
+    "subsamples": {
+      "size": {
+        "large (top third)": {
+          "bp": -48.04601332346481,
+          "t": -1.755635643344004,
+          "events": 3926,
+          "seasons": 34
+        },
+        "mid": {
+          "bp": -44.721848503299995,
+          "t": -0.965797977263639,
+          "events": 3205,
+          "seasons": 34
+        },
+        "small (bottom third)": {
+          "bp": -43.98731603493636,
+          "t": -1.0934276248321941,
+          "events": 2509,
+          "seasons": 34
+        }
+      },
+      "review": {
+        "outside": {
+          "bp": -51.94469038523602,
+          "t": -2.6628965740822976,
+          "events": 10955,
+          "seasons": 34
+        },
+        "inside": {
+          "bp": -263.13298623266314,
+          "t": -1.7829547289261543,
+          "events": 531,
+          "seasons": 21
+        }
+      },
+      "december": {
+        "outside": {
+          "bp": -63.85839995074484,
+          "t": -2.8861705007421734,
+          "events": 10363,
+          "seasons": 34
+        },
+        "inside": {
+          "bp": -86.22118795678364,
+          "t": -1.2467230349620806,
+          "events": 1123,
+          "seasons": 8
+        }
+      },
+      "wave": {
+        "off": {
+          "bp": -50.95850768321081,
+          "t": -2.3210711063859044,
+          "events": 10794,
+          "seasons": 34
+        },
+        "on": {
+          "bp": -216.7746611416918,
+          "t": -2.9333519632615497,
+          "events": 692,
+          "seasons": 27
+        }
+      },
+      "strict": {
+        "bp": -46.517322865444,
+        "t": -2.2230324018033922,
+        "events": 9281,
+        "seasons": 34
+      }
+    },
+    "verdict": "size interaction is not distinguishable from zero -- index rebalancing does not explain the effect"
+  },
+  "limitations": [
+    "The effect appears at sixty trading days and at no shorter horizon (abn5 -6.2, abn20 -1.0). Only three horizons were examined, so the search was narrow, but a result that lives at one horizon is weaker than one that builds across them.",
+    "Half-sample stability cannot be claimed. The aggregate series reads -39.9 then -77.7 across the two halves and the pension series reads -83.1 then -48.1 -- opposite patterns, which is what thirty-four seasons buys you.",
+    "Surprise is proxied by the announcement-day price reaction, which is entangled with the flow being measured. A true consensus-based surprise is the single largest available improvement and requires paid data.",
+    "The pension fund cannot be claimed as a sharper baseline than the aggregate: the paired seasonal difference is -31.3 bp at t -1.47.",
+    "The long side does not work. A random ranking separates the quiet surprises better than the real one does."
+  ],
+  "rejected": [
+    "Foreign ownership flow predicts post-event returns (+21.8 bp/SD, t +1.06)",
+    "The effect holds across filing types (periodic filings: -19.8 bp/SD, t -1.31)",
+    "Buying the quiet surprises earns a premium (placebo ranking reads higher)",
+    "The pension fund is a separable carrier of the aggregate signal (both collapse when entered together)",
+    "Index rebalancing explains the effect (size interaction +64.3, t +1.14 -- wrong sign)"
+  ]
+}
