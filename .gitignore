@@ -8,3 +8,4 @@ venv/
 *.parquet.tmp
 results/decompose_panel.parquet
 results/*.parquet
+handoff/*.parquet
