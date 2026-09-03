@@ -201,21 +201,43 @@ def main() -> int:
     print(f"  bar |t| >= {bar:.2f}")
 
     print("\nportfolio contrasts, one vote per position")
-    s = prov.dropna(subset=["abn60", "surprise", AGG, PENSION]).copy()
+    # The per-type series begins in 2018; requiring it here would
+    # silently shrink the aggregate book to that window too.
+    s = prov.dropna(subset=["abn60", "surprise", AGG]).copy()
     s["season"] = season(s["D"])
     s["rs"] = s.groupby("D")["surprise"].rank(pct=True)
     beats = s[s["rs"] >= TOP].copy()
-    beats["x_placebo"] = np.random.default_rng(a.seed).standard_normal(len(beats))
+    # A single random ranking is one draw from the null, and one draw has an
+    # error bar as wide as the thing being tested -- an earlier version of this
+    # file read the long side off exactly that and got the sign it happened to
+    # draw. The placebo is now the distribution of many draws.
+    rng_p = np.random.default_rng(a.seed)
+    beats["x_placebo"] = rng_p.standard_normal(len(beats))
 
     def contrast(col, side):
-        r = beats.groupby("D")[col].rank(pct=True)
-        sel = beats[r >= TOP] if side == "crowded" else beats[r <= BOTTOM]
+        # Rank inside the rows where this particular series exists, so each
+        # baseline is measured against its own benchmark rather than against
+        # a book it only partly covers.
+        b = beats.dropna(subset=[col])
+        r = b.groupby("D")[col].rank(pct=True)
+        sel = b[r >= TOP] if side == "crowded" else b[r <= BOTTOM]
         x = sel.groupby("season")["abn60"].mean()
-        y = beats.groupby("season")["abn60"].mean()
+        y = b.groupby("season")["abn60"].mean()
         k = x.index.intersection(y.index)
         v = ((x[k] - y[k]) * 1e4).to_numpy()
         return {"bp": float(v.mean()), "t": float(bfm.tracker._nw_t(v, 1)),
                 "seasons": int(len(v)), "positions": int(len(sel))}
+
+    def placebo_band(side, draws=200):
+        """Where the contrast lands when the ranking carries no information."""
+        vals = []
+        for _ in range(draws):
+            beats["x_placebo"] = rng_p.standard_normal(len(beats))
+            vals.append(contrast("x_placebo", side)["bp"])
+        v = np.array(vals)
+        return {"mean": float(v.mean()), "sd": float(v.std(ddof=1)),
+                "p05": float(np.percentile(v, 5)),
+                "p95": float(np.percentile(v, 95)), "draws": draws}
 
     R["portfolio"] = {"beats": int(len(beats))}
     for side in ("crowded", "quiet"):
@@ -223,10 +245,17 @@ def main() -> int:
             "institutional": contrast(AGG, side),
             "pension": contrast(PENSION, side),
             "placebo": contrast("x_placebo", side)}
+        band = placebo_band(side)
+        R["portfolio"][side]["placebo_band"] = band
         print(f"  {side} beats - all beats")
         for k, v in R["portfolio"][side].items():
+            if k == "placebo_band":
+                continue
             print(f"    {k:<16}{v['bp']:+8.1f} bp/position   "
                   f"t {v['t']:+5.2f}   n {v['positions']:,}")
+        print(f"    {'placebo band':<16}{band['mean']:+8.1f} bp mean   "
+              f"5-95% [{band['p05']:+.1f}, {band['p95']:+.1f}]   "
+              f"sd {band['sd']:.1f}   {band['draws']} draws")
 
     R["rejected"] = [
         {"claim": "foreign ownership flow predicts post-event returns",

@@ -193,13 +193,16 @@ def main() -> int:
     def ok(r):
         return r is not None and r["bp"] < 0 and r["t"] < -1.5
 
+    # These splits are descriptive only. Gating on significance inside a
+    # third of the sample asks whether a third of the data is significant,
+    # not whether the effect varies with the moderator; that question is
+    # settled by the interactions in 40_threats_formal, and the verdict
+    # belongs there.
     small_ok = ok(R["size"].get("small (bottom third)"))
     outside_ok = ok(R["review"].get("outside"))
-    verdict = ("rebalancing is not the explanation -- the effect is present "
-               "in small caps and outside review windows"
-               if small_ok and outside_ok else
-               "rebalancing cannot be ruled out -- the effect does not "
-               "survive where index pressure is absent")
+    verdict = ("descriptive splits only -- see 40_threats_formal for the "
+               "interaction tests that decide whether these moderators "
+               "actually change the effect")
     print(f"\nverdict: {verdict}")
     R["verdict"] = verdict
     R["gates"] = {"small_caps": bool(small_ok),

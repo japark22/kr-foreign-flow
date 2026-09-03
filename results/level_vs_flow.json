@@ -1,0 +1,36 @@
+{
+  "ladder": {
+    "f_flow20": {
+      "bp": 9.804590614824187,
+      "t": 0.5858025003049802,
+      "events": 20036,
+      "seasons": 61,
+      "p_fwer": 0.96
+    },
+    "f_flow60": {
+      "bp": -19.132098081077014,
+      "t": -1.3733505001514037,
+      "events": 19975,
+      "seasons": 61,
+      "p_fwer": 0.54
+    },
+    "f_hold20": {
+      "bp": 12.808541258605157,
+      "t": 0.7572541730887676,
+      "events": 20099,
+      "seasons": 61,
+      "p_fwer": 0.9
+    },
+    "f_level": {
+      "bp": 8.889394631696858,
+      "t": 0.4774105224210121,
+      "events": 20158,
+      "seasons": 61,
+      "p_fwer": 0.98
+    }
+  },
+  "ordering_rho": 0.23383587212230098,
+  "bar": 2.4849901123485036,
+  "winners": [],
+  "verdict": "levels behave like flows here -- the distinction does not save Korea, and belongs in a market whose disclosure is a level"
+}
