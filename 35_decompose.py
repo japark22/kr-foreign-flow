@@ -182,7 +182,11 @@ def main() -> int:
     else:
         panel = build_panel(a.start)
 
-    sub = panel[panel["kind"] == "provisional"]
+    # Per-investor-type data starts in 2018, so this decomposition is
+    # a subsample of the headline window (2011-2026) by construction,
+    # and its anchor is the 2018+ figure, not the full-window one.
+    sub = panel[(panel["kind"] == "provisional")
+                & (panel["D"] >= "2018-01-01")]
     print(f"\nprovisional events {len(sub):,}   CTRL {list(bfm.CTRL)}")
 
     xs_a = ["surprise"] + list(bfm.CTRL) + [ANCHOR]

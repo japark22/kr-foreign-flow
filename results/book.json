@@ -1,0 +1,137 @@
+{
+  "params": {
+    "top": 0.7,
+    "crowd": 0.7
+  },
+  "counts": {
+    "all": 7495,
+    "kept": 4407,
+    "skipped": 3088,
+    "cohorts": 62
+  },
+  "gross": {
+    "all": {
+      "ann_return_pct": 2.0277120126755035,
+      "ann_vol_pct": 8.38412405913287,
+      "info_ratio": 0.24185138463769587,
+      "hit_rate": 0.5483870967741935,
+      "worst_season_pct": -9.287092061874338,
+      "max_drawdown_pct": -31.21314710235865,
+      "seasons": 62
+    },
+    "filtered": {
+      "ann_return_pct": 3.1428009097275242,
+      "ann_vol_pct": 9.630183973102382,
+      "info_ratio": 0.3263490000300654,
+      "hit_rate": 0.4838709677419355,
+      "worst_season_pct": -9.059719914452211,
+      "max_drawdown_pct": -30.559221697004567,
+      "seasons": 62
+    },
+    "skipped": {
+      "ann_return_pct": 0.752611607665154,
+      "ann_vol_pct": 9.631803740010216,
+      "info_ratio": 0.0781381793047577,
+      "hit_rate": 0.5161290322580645,
+      "worst_season_pct": -10.602192449644225,
+      "max_drawdown_pct": -40.333542208536585,
+      "seasons": 62
+    }
+  },
+  "contribution": {
+    "per_position_bp": 27.877222426300516,
+    "ann_pct": 1.1150888970520207,
+    "t": 1.1391883646139775,
+    "positive_seasons": 0.5483870967741935,
+    "seasons": 62
+  },
+  "net": {
+    "0": {
+      "all": {
+        "ann_return_pct": 2.0277120126755035,
+        "ann_vol_pct": 8.38412405913287,
+        "info_ratio": 0.24185138463769587,
+        "hit_rate": 0.5483870967741935,
+        "worst_season_pct": -9.287092061874338,
+        "max_drawdown_pct": -31.21314710235865,
+        "seasons": 62
+      },
+      "filtered": {
+        "ann_return_pct": 3.1428009097275242,
+        "ann_vol_pct": 9.630183973102382,
+        "info_ratio": 0.3263490000300654,
+        "hit_rate": 0.4838709677419355,
+        "worst_season_pct": -9.059719914452211,
+        "max_drawdown_pct": -30.559221697004567,
+        "seasons": 62
+      }
+    },
+    "25": {
+      "all": {
+        "ann_return_pct": 1.0277120126755033,
+        "ann_vol_pct": 8.38412405913287,
+        "info_ratio": 0.12257834037606008,
+        "hit_rate": 0.5,
+        "worst_season_pct": -9.537092061874338,
+        "max_drawdown_pct": -36.99706947211268,
+        "seasons": 62
+      },
+      "filtered": {
+        "ann_return_pct": 2.1428009097275242,
+        "ann_vol_pct": 9.630183973102383,
+        "info_ratio": 0.2225088238929268,
+        "hit_rate": 0.4838709677419355,
+        "worst_season_pct": -9.309719914452211,
+        "max_drawdown_pct": -36.92336800791228,
+        "seasons": 62
+      }
+    },
+    "50": {
+      "all": {
+        "ann_return_pct": 0.0277120126755036,
+        "ann_vol_pct": 8.38412405913287,
+        "info_ratio": 0.003305296114424352,
+        "hit_rate": 0.4838709677419355,
+        "worst_season_pct": -9.787092061874338,
+        "max_drawdown_pct": -42.6416923901742,
+        "seasons": 62
+      },
+      "filtered": {
+        "ann_return_pct": 1.1428009097275245,
+        "ann_vol_pct": 9.630183973102383,
+        "info_ratio": 0.1186686477557883,
+        "hit_rate": 0.4838709677419355,
+        "worst_season_pct": -9.559719914452211,
+        "max_drawdown_pct": -42.91052471138015,
+        "seasons": 62
+      }
+    },
+    "75": {
+      "all": {
+        "ann_return_pct": -0.9722879873244961,
+        "ann_vol_pct": 8.38412405913287,
+        "info_ratio": -0.11596774814721138,
+        "hit_rate": 0.4838709677419355,
+        "worst_season_pct": -10.037092061874336,
+        "max_drawdown_pct": -48.068015834033886,
+        "seasons": 62
+      },
+      "filtered": {
+        "ann_return_pct": 0.1428009097275245,
+        "ann_vol_pct": 9.630183973102383,
+        "info_ratio": 0.014828471618649764,
+        "hit_rate": 0.46774193548387094,
+        "worst_season_pct": -9.809719914452211,
+        "max_drawdown_pct": -48.556571431984075,
+        "seasons": 62
+      }
+    }
+  },
+  "capacity": {
+    "median_market_cap_krw_bn": 782.0000000000002,
+    "p25_market_cap_krw_bn": 267.76730720499984,
+    "median_turnover_ratio": 0.004273644807615406,
+    "median_names_per_cohort": 73
+  },
+  "verdict": "the filter points the right way but its contribution is not separable from noise at this sample size"
+}

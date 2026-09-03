@@ -1,0 +1,83 @@
+{
+  "provisional": {
+    "by_turnover": {
+      "low turnover": {
+        "bp": 30.50642133516546,
+        "t": 0.2437470464442056,
+        "seasons": 32
+      },
+      "mid turnover": {
+        "bp": -254.84252992652142,
+        "t": -1.9943598371703235,
+        "seasons": 50
+      },
+      "high turnover": {
+        "bp": -437.5274174392113,
+        "t": -2.645140020256242,
+        "seasons": 51
+      }
+    },
+    "by_ban": {
+      "short selling banned": {
+        "bp": -503.2767814198713,
+        "t": -3.5865209215243734,
+        "seasons": 11
+      },
+      "short selling allowed": {
+        "bp": -182.71074743981563,
+        "t": -2.3380613372725225,
+        "seasons": 52
+      }
+    },
+    "low_turn_banned": {
+      "bp": 163.28222681872387,
+      "t": 1.2926440663492313,
+      "seasons": 8
+    },
+    "passes": {
+      "P1_liquidity": false,
+      "P2_ban": true
+    }
+  },
+  "all": {
+    "by_turnover": {
+      "low turnover": {
+        "bp": -64.33098659404436,
+        "t": -0.9942668780267743,
+        "seasons": 62
+      },
+      "mid turnover": {
+        "bp": -144.97161934747774,
+        "t": -1.8045595672491253,
+        "seasons": 62
+      },
+      "high turnover": {
+        "bp": 12.389555578213603,
+        "t": 0.1470301136318094,
+        "seasons": 62
+      }
+    },
+    "by_ban": {
+      "short selling banned": {
+        "bp": -85.88775087197861,
+        "t": -1.021740777326188,
+        "seasons": 12
+      },
+      "short selling allowed": {
+        "bp": -140.66108328597483,
+        "t": -2.124901394589009,
+        "seasons": 53
+      }
+    },
+    "low_turn_banned": {
+      "bp": -128.3483994625809,
+      "t": -0.7630703940881242,
+      "seasons": 11
+    },
+    "passes": {
+      "P1_liquidity": true,
+      "P2_ban": false
+    }
+  },
+  "verdict": "exit friction is supported -- the gap lives where the door is narrow"
+}
