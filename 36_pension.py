@@ -138,7 +138,11 @@ def main() -> int:
 
     # 2 --------------------------------------------------------------
     print("\n2  split halves (expect: both negative)")
-    cut = sub["D"].quantile(0.5)
+    # The median must be taken on the rows that carry the variable. The
+    # per-type series starts in 2018 while the panel now runs from 2011, so
+    # splitting on the full provisional median puts the cut before most of
+    # the data and the "first half" becomes a sliver.
+    cut = sub.dropna(subset=[PENSION])["D"].quantile(0.5)
     for tag, s in (("first half", sub[sub["D"] <= cut]),
                    ("second half", sub[sub["D"] > cut])):
         p = prepare(s, PENSION, xs_p, "abn60")
