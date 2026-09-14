@@ -110,8 +110,14 @@ def main() -> int:
     d["D"] = pd.to_datetime(d["D"])
     prov = d[d["kind"] == "provisional"].copy()
 
-    cal = pd.DatetimeIndex(sorted(pd.read_parquet(
-        CALSRC, columns=["trade_date"])["trade_date"].unique()))
+    # The calendar has to span the panel. Reading it from a per-ticker
+    # investor file capped it at 2018 while the events start in 2011, which
+    # silently left every earlier event unclassified -- counted as outside
+    # every window rather than tested against its own year's dates.
+    from krxflow import storage
+    _cal = storage.read_range("market", "20100101", None,
+                              columns=["trade_date"])
+    cal = pd.DatetimeIndex(sorted(pd.to_datetime(_cal["trade_date"]).unique()))
     print(f"trading calendar {len(cal):,} days "
           f"{cal[0]:%Y-%m-%d} .. {cal[-1]:%Y-%m-%d}")
 
