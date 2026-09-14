@@ -1,5 +1,5 @@
 {
-  "generated": "2026-09-14 02:53 UTC",
+  "generated": "2026-09-14 03:00 UTC",
   "stale_inputs": [],
   "claim": "On Korean provisional earnings announcements, institutional net buying in the twenty trading days before the announcement predicts the next sixty trading days of size-adjusted return negatively. The usable form is avoidance, not accumulation: among the strongest surprises, those the institutions had already crowded into underperform the rest.",
   "estimator": {
@@ -25,9 +25,9 @@
       "seasons": 61
     },
     "after_threats": {
-      "bp": -33.49851339444905,
-      "t": -2.1522069037785934,
-      "events": 15239,
+      "bp": -33.399975410490505,
+      "t": -2.0109159501195335,
+      "events": 14277,
       "seasons": 61
     },
     "periodic": {
@@ -277,22 +277,22 @@
       },
       "review window": {
         "main": {
-          "bp": -37.42364011967803,
-          "t": -2.3757447474306974
+          "bp": -38.45071694711427,
+          "t": -2.38913385939926
         },
         "interaction": {
-          "bp": -184.47766404027,
-          "t": -1.7433030486531154
+          "bp": -85.48261352801406,
+          "t": -1.1542554091448098
         }
       },
       "December": {
         "main": {
-          "bp": -46.15775987252105,
-          "t": -2.516482957142016
+          "bp": -44.252185320279175,
+          "t": -2.3492388619491273
         },
         "interaction": {
-          "bp": 53.27939611404247,
-          "t": 0.9684799008262208
+          "bp": 14.093383217298234,
+          "t": 0.32816244735917954
         }
       },
       "market wave": {
@@ -329,30 +329,30 @@
       },
       "review": {
         "outside": {
-          "bp": -36.087007605212904,
-          "t": -2.3906020515260322,
-          "events": 17310,
+          "bp": -37.21753369327418,
+          "t": -2.391844733560957,
+          "events": 16922,
           "seasons": 61
         },
         "inside": {
-          "bp": -263.13298623266314,
-          "t": -1.7829547289261543,
-          "events": 531,
-          "seasons": 21
+          "bp": -129.82630569272683,
+          "t": -1.2168184259319978,
+          "events": 919,
+          "seasons": 41
         }
       },
       "december": {
         "outside": {
-          "bp": -42.70610899160602,
-          "t": -2.5868746169594345,
-          "events": 16718,
+          "bp": -42.443899325731294,
+          "t": -2.466418759414664,
+          "events": 16039,
           "seasons": 61
         },
         "inside": {
-          "bp": -86.22118795678365,
-          "t": -1.2467230349620806,
-          "events": 1123,
-          "seasons": 8
+          "bp": -65.69893636651642,
+          "t": -1.264657683368309,
+          "events": 1802,
+          "seasons": 17
         }
       },
       "wave": {
@@ -370,9 +370,9 @@
         }
       },
       "strict": {
-        "bp": -33.49851339444905,
-        "t": -2.1522069037785934,
-        "events": 15239,
+        "bp": -33.399975410490505,
+        "t": -2.0109159501195335,
+        "events": 14277,
         "seasons": 61
       }
     },

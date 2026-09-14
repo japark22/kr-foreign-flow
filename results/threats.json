@@ -1,8 +1,8 @@
 {
   "calendar": {
-    "days": 2123,
-    "reviews": 35,
-    "december": 8,
+    "days": 4110,
+    "reviews": 67,
+    "december": 16,
     "review_pad": 10,
     "dec_pad": [
       10,
@@ -37,30 +37,30 @@
   },
   "review": {
     "outside": {
-      "bp": -36.087007605212904,
-      "t": -2.3906020515260322,
-      "events": 17310,
+      "bp": -37.21753369327418,
+      "t": -2.391844733560957,
+      "events": 16922,
       "seasons": 61
     },
     "inside": {
-      "bp": -263.13298623266314,
-      "t": -1.7829547289261543,
-      "events": 531,
-      "seasons": 21
+      "bp": -129.82630569272683,
+      "t": -1.2168184259319978,
+      "events": 919,
+      "seasons": 41
     }
   },
   "december": {
     "outside": {
-      "bp": -42.70610899160602,
-      "t": -2.5868746169594345,
-      "events": 16718,
+      "bp": -42.443899325731294,
+      "t": -2.466418759414664,
+      "events": 16039,
       "seasons": 61
     },
     "inside": {
-      "bp": -86.22118795678365,
-      "t": -1.2467230349620806,
-      "events": 1123,
-      "seasons": 8
+      "bp": -65.69893636651642,
+      "t": -1.264657683368309,
+      "events": 1802,
+      "seasons": 17
     }
   },
   "wave": {
@@ -78,12 +78,12 @@
     }
   },
   "strict": {
-    "bp": -33.49851339444905,
-    "t": -2.1522069037785934,
-    "events": 15239,
+    "bp": -33.399975410490505,
+    "t": -2.0109159501195335,
+    "events": 14277,
     "seasons": 61
   },
-  "verdict": "rebalancing cannot be ruled out -- the effect does not survive where index pressure is absent",
+  "verdict": "descriptive splits only -- see 40_threats_formal for the interaction tests that decide whether these moderators actually change the effect",
   "gates": {
     "small_caps": false,
     "outside_reviews": true
