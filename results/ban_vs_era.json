@@ -1,0 +1,92 @@
+{
+  "block_fl_minus_i_before 2020-03-16": {
+    "bp": 19.742125223521498,
+    "events": 37356,
+    "seasons": 32,
+    "firms": 1738,
+    "t_season": 1.333685813958854,
+    "t_firm": 1.6789395642977256,
+    "t_two_way": 1.2839878227979722
+  },
+  "block_fl_minus_i_after 2020, shorting normal": {
+    "bp": 43.02596667130389,
+    "events": 25674,
+    "seasons": 15,
+    "firms": 2317,
+    "t_season": 2.6702996104158636,
+    "t_firm": 3.0161510971770364,
+    "t_two_way": 2.6269805052733233
+  },
+  "block_fl_minus_i_shorting suspended": {
+    "bp": 101.65547516176196,
+    "events": 17814,
+    "seasons": 11,
+    "firms": 2194,
+    "t_season": 4.689515135411033,
+    "t_firm": 4.801769782409251,
+    "t_two_way": 4.561482631515223
+  },
+  "block_fl_x_surp_before 2020-03-16": {
+    "bp": 19.04911739726442,
+    "events": 37762,
+    "seasons": 32,
+    "firms": 1739,
+    "t_season": 0.7402947479516617,
+    "t_firm": 1.2178601249222718,
+    "t_two_way": 0.723114750638687
+  },
+  "block_fl_x_surp_after 2020, shorting normal": {
+    "bp": 66.48253415379246,
+    "events": 26268,
+    "seasons": 15,
+    "firms": 2328,
+    "t_season": 4.326376500633962,
+    "t_firm": 3.5273073882632264,
+    "t_two_way": 4.101186273884855
+  },
+  "block_fl_x_surp_shorting suspended": {
+    "bp": 196.61557415329727,
+    "events": 17872,
+    "seasons": 11,
+    "firms": 2196,
+    "t_season": 5.1947636400177855,
+    "t_firm": 7.0896424288953055,
+    "t_two_way": 5.128525277130895
+  },
+  "interaction_fl_minus_i": {
+    "fl_minus_i": {
+      "bp": 8.35785297901845,
+      "t_season": 0.5502655838500397
+    },
+    "fl_minus_i x suspended": {
+      "bp": 91.21786942223314,
+      "t_season": 3.397621921795841,
+      "wild_p": 0.0025,
+      "clusters": 58
+    },
+    "fl_minus_i x after-2020-normal": {
+      "bp": 28.51422785494211,
+      "t_season": 1.0626322243677608,
+      "wild_p": 0.315,
+      "clusters": 58
+    }
+  },
+  "interaction_fl_x_surp": {
+    "fl_x_surp": {
+      "bp": 41.1686963373136,
+      "t_season": 1.6947026157940102
+    },
+    "fl_x_surp x suspended": {
+      "bp": 66.77628337717036,
+      "t_season": 1.6344148757890453,
+      "wild_p": 0.149,
+      "clusters": 58
+    },
+    "fl_x_surp x after-2020-normal": {
+      "bp": 12.081968227786229,
+      "t_season": 0.321384569383672,
+      "wild_p": 0.7645,
+      "clusters": 58
+    }
+  }
+}

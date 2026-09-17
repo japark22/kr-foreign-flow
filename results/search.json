@@ -1,0 +1,477 @@
+{
+  "draws": 500,
+  "cells": 2652,
+  "threshold_t": 5.024455382558726,
+  "survivors": [
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "f_level-i_flow20_v2",
+      "bp": 52.18989997593649,
+      "t": 6.140611882481111,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "f_level*surprise",
+      "bp": 74.73628652424884,
+      "t": 5.47705431662255,
+      "rows": 86735,
+      "seasons": 62
+    }
+  ],
+  "top50": [
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "f_level-i_flow20_v2",
+      "bp": 52.18989997593649,
+      "t": 6.140611882481111,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "f_level*surprise",
+      "bp": 74.73628652424884,
+      "t": 5.47705431662255,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "f_level-ipos60_adv",
+      "bp": 49.19452129914278,
+      "t": 4.924476995686486,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "i_flow20_v2-inst_abs20",
+      "bp": -63.88030928457512,
+      "t": -4.7940113680623675,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "inst_abs20*surprise",
+      "bp": 118.79646159291275,
+      "t": 4.719323055627456,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "f_level",
+      "bp": 53.87583083186168,
+      "t": 4.665319356303868,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "inst_abs20-ipos60_adv",
+      "bp": 67.35544939421429,
+      "t": 4.616550584920103,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "f_level-no_inst20",
+      "bp": 52.8058405571201,
+      "t": 4.444826099684962,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "f_flow60-f_level",
+      "bp": -49.09846694919802,
+      "t": -4.413093865685718,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "f_level-ipos60",
+      "bp": 44.09578074432225,
+      "t": 4.303185949308451,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "inst_abs20",
+      "bp": 94.08487033747451,
+      "t": 4.224256100708402,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "inst_abs20-no_inst20",
+      "bp": 94.08487033747394,
+      "t": 4.224256100708375,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "i_flow20_v2-inst_days20",
+      "bp": -38.58342339633124,
+      "t": -3.976872580397788,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn20",
+      "feature": "f_level-ipos60_adv",
+      "bp": 21.454616473753216,
+      "t": 3.91726929802129,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "inst_abs20-ipos60",
+      "bp": 52.2294570391212,
+      "t": 3.7877364179416215,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn20",
+      "feature": "f_level*surprise",
+      "bp": 30.06975103212811,
+      "t": 3.7064046880795587,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn20",
+      "feature": "f_level-i_flow20_v2",
+      "bp": 19.643735996682462,
+      "t": 3.6339376975277093,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "provisional/full-window",
+      "horizon": "abn5",
+      "feature": "ipos60-ipos120",
+      "bp": 16.807738739738422,
+      "t": 3.5968798709469993,
+      "rows": 8197,
+      "seasons": 57
+    },
+    {
+      "block": "provisional/sub-type era",
+      "horizon": "abn60",
+      "feature": "x_연기금",
+      "bp": -123.81843826969953,
+      "t": -3.566188870590305,
+      "rows": 2941,
+      "seasons": 32
+    },
+    {
+      "block": "provisional/sub-type era",
+      "horizon": "abn60",
+      "feature": "no_inst20-x_연기금",
+      "bp": 123.81843826969953,
+      "t": 3.566188870590305,
+      "rows": 2941,
+      "seasons": 32
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "f_flow20-f_level",
+      "bp": -41.41496587376891,
+      "t": -3.56439693636211,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn20",
+      "feature": "f_flow20-f_level",
+      "bp": -17.312789471011385,
+      "t": -3.5605101008429676,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn20",
+      "feature": "f_level-ipos60",
+      "bp": 20.03971766851291,
+      "t": 3.551872794790552,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "f_level-ipos120_adv",
+      "bp": 39.850110469083454,
+      "t": 3.4598011522955576,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "inst_abs20-ipos120_adv",
+      "bp": 50.830598984441366,
+      "t": 3.4185510917326956,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/sub-type era",
+      "horizon": "abn60",
+      "feature": "f_level-x_금융투자",
+      "bp": 60.82553722737776,
+      "t": 3.409582643629085,
+      "rows": 21067,
+      "seasons": 32
+    },
+    {
+      "block": "periodic/sub-type era",
+      "horizon": "abn60",
+      "feature": "f_level-x_기타금융",
+      "bp": 50.975906253201444,
+      "t": 3.3739350021097336,
+      "rows": 21067,
+      "seasons": 32
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "f_flow60-inst_abs20",
+      "bp": -53.53229266020158,
+      "t": -3.3700808792894152,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn20",
+      "feature": "f_flow60-f_level",
+      "bp": -16.421509137681042,
+      "t": -3.35626513742274,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/sub-type era",
+      "horizon": "abn20",
+      "feature": "f_level-ipos60_adv",
+      "bp": 29.03247713532099,
+      "t": 3.3513187307427272,
+      "rows": 21067,
+      "seasons": 32
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "ipos120-ipos60_adv",
+      "bp": 27.1159190650503,
+      "t": 3.266629111698162,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "provisional/sub-type era",
+      "horizon": "abn5",
+      "feature": "ipos120_adv-x_기타법인",
+      "bp": -32.39784056631868,
+      "t": -3.2305614590681646,
+      "rows": 2941,
+      "seasons": 32
+    },
+    {
+      "block": "periodic/sub-type era",
+      "horizon": "abn20",
+      "feature": "f_level-ipos60",
+      "bp": 27.26573901418084,
+      "t": 3.2304856035268985,
+      "rows": 21067,
+      "seasons": 32
+    },
+    {
+      "block": "provisional/sub-type era",
+      "horizon": "abn5",
+      "feature": "inst_days20-x_기타법인",
+      "bp": -22.555829958045287,
+      "t": -3.2233436180944715,
+      "rows": 2941,
+      "seasons": 32
+    },
+    {
+      "block": "periodic/sub-type era",
+      "horizon": "abn60",
+      "feature": "f_level*surprise",
+      "bp": 77.03140988303085,
+      "t": 3.22273328114701,
+      "rows": 21067,
+      "seasons": 32
+    },
+    {
+      "block": "periodic/sub-type era",
+      "horizon": "abn60",
+      "feature": "x_금융투자-x_사모",
+      "bp": -33.87179129590178,
+      "t": -3.2088889707802593,
+      "rows": 21067,
+      "seasons": 32
+    },
+    {
+      "block": "provisional/sub-type era",
+      "horizon": "abn5",
+      "feature": "ipos120-x_기타법인",
+      "bp": -35.41024324105866,
+      "t": -3.2079956680021398,
+      "rows": 2941,
+      "seasons": 32
+    },
+    {
+      "block": "provisional/sub-type era",
+      "horizon": "abn60",
+      "feature": "x_보험-x_연기금",
+      "bp": 125.6727196519126,
+      "t": 3.2069800785909255,
+      "rows": 2941,
+      "seasons": 32
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn20",
+      "feature": "inst_days20-ipos60_adv",
+      "bp": 19.77459823292225,
+      "t": 3.195840039014001,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "inst_days20-inst_abs20",
+      "bp": -37.724121108073696,
+      "t": -3.166582508685206,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn60",
+      "feature": "inst_days20*surprise",
+      "bp": 57.41068694975988,
+      "t": 3.1309224649587852,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn20",
+      "feature": "f_level-no_inst20",
+      "bp": 19.346774340456115,
+      "t": 3.0912980928585863,
+      "rows": 86735,
+      "seasons": 62
+    },
+    {
+      "block": "periodic/sub-type era",
+      "horizon": "abn60",
+      "feature": "inst_abs20-x_개인",
+      "bp": 62.80676246697577,
+      "t": 3.0675210495054395,
+      "rows": 21067,
+      "seasons": 32
+    },
+    {
+      "block": "periodic/sub-type era",
+      "horizon": "abn20",
+      "feature": "f_level*surprise",
+      "bp": 31.273700004436336,
+      "t": 3.058582349510559,
+      "rows": 21067,
+      "seasons": 32
+    },
+    {
+      "block": "provisional/full-window",
+      "horizon": "abn5",
+      "feature": "f_flow20-ipos120_adv",
+      "bp": 19.661345459051788,
+      "t": 3.0342920313259745,
+      "rows": 8197,
+      "seasons": 57
+    },
+    {
+      "block": "provisional/sub-type era",
+      "horizon": "abn5",
+      "feature": "ipos120_adv-x_사모",
+      "bp": -28.167424600456922,
+      "t": -3.0334448487904226,
+      "rows": 2941,
+      "seasons": 32
+    },
+    {
+      "block": "provisional/sub-type era",
+      "horizon": "abn5",
+      "feature": "i_flow20_v2-x_사모",
+      "bp": -21.41604057579953,
+      "t": -3.016018348634733,
+      "rows": 2941,
+      "seasons": 32
+    },
+    {
+      "block": "provisional/sub-type era",
+      "horizon": "abn5",
+      "feature": "ipos120-x_사모",
+      "bp": -30.087148010430766,
+      "t": -3.0085347155746693,
+      "rows": 2941,
+      "seasons": 32
+    },
+    {
+      "block": "provisional/sub-type era",
+      "horizon": "abn5",
+      "feature": "x_사모-x_연기금",
+      "bp": 21.820385458498652,
+      "t": 2.987089422720064,
+      "rows": 2941,
+      "seasons": 32
+    },
+    {
+      "block": "periodic/full-window",
+      "horizon": "abn20",
+      "feature": "f_hold20-f_level",
+      "bp": -14.412120818524333,
+      "t": -2.9740244764294634,
+      "rows": 86735,
+      "seasons": 62
+    }
+  ]
+}
