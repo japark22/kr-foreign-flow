@@ -129,3 +129,39 @@ Taiwan and Hong Kong implement these definitions unchanged. Window lengths,
 quantile grid, thresholds and universe rules are not re-tuned per market.
 A deviation forced by data availability is reported as a deviation, in the
 same place as the result, and never absorbed silently.
+
+## 10. Amendment — institutional coverage, declared before estimation
+
+The exchange feed omits a ticker-day row when institutions did not trade the
+name. The panel read that omission as unknown and dropped the event, costing
+roughly a quarter of the sample, concentrated in exactly the small, volatile
+names where the conditional tail effect was measured.
+
+Rule, fixed here before any coefficient is recomputed:
+
+a. An omitted cell is set to zero only in a calendar year where an
+   independent source shows the omission means zero. The independent source
+   is the per-ticker investor-detail store, which carries every sub-type with
+   explicit zeros; the sub-type sum reproduces the aggregate exactly
+   (correlation 1.000000, exact match on every overlapping cell).
+   Threshold: at least 95% of that year's omitted cells are exactly zero.
+   Measured: 2018 0.989, 2019 0.982, 2020 0.984, 2021 0.990, 2022 0.986,
+   2023 0.976, 2024 0.998, 2025 1.000, 2026 0.789.
+   2026 fails and is excluded from imputation.
+
+b. Years before 2018 cannot be checked against that source, which does not
+   reach back that far. They are imputed on the structural argument, and
+   every headline number is reported twice, with and without the pre-2018
+   imputed cells. If the two disagree materially the pre-2018 block is
+   dropped, not argued for.
+
+c. Zero institutional participation is carried as its own binary state, not
+   as a low value on a continuum. A mass of identical zeros inside a ranked
+   cross-section manufactures structure out of nothing, which this project
+   has already been caught by once. The continuous feature is estimated on
+   the cells with participation; the no-participation state is estimated as
+   a separate term and reported with its own coverage.
+
+d. The reconstruction is not trusted unless it reproduces the column already
+   in the panel on the cells where that column exists. The script aborts
+   otherwise.
