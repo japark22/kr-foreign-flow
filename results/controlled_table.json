@@ -1,0 +1,220 @@
+{
+  "rung": 10,
+  "draws": 200,
+  "all / top surprise quintile / standard / mean": {
+    "bp": -42.48695653811494,
+    "t_season": -1.6452599022770913,
+    "t_two_way": -1.3297992639856329,
+    "events": 15929
+  },
+  "all / top surprise quintile / standard / tau0.1": {
+    "bp": -28.79199380603316,
+    "t": -1.071526029579196,
+    "p05": -30.80691335773517,
+    "p95": 31.639418142622667,
+    "outside_band": false
+  },
+  "all / top surprise quintile / standard / tau0.25": {
+    "bp": -19.567380824162683,
+    "t": -1.13264619657399,
+    "p05": -24.26609183943669,
+    "p95": 22.625375787435416,
+    "outside_band": false
+  },
+  "all / top surprise quintile / standard / tau0.5": {
+    "bp": -22.07132464947732,
+    "t": -1.08626289246738,
+    "p05": -24.638109860401478,
+    "p95": 24.59192204929032,
+    "outside_band": false
+  },
+  "all / top surprise quintile / plus long momentum / mean": {
+    "bp": -36.429092352690404,
+    "t_season": -1.556645379623217,
+    "t_two_way": -0.4534222659773579,
+    "events": 14306
+  },
+  "all / top surprise quintile / plus long momentum / tau0.1": {
+    "bp": -21.072815209795625,
+    "t": -0.7855529251037561,
+    "p05": -33.248986891516886,
+    "p95": 32.32893399978464,
+    "outside_band": false
+  },
+  "all / top surprise quintile / plus long momentum / tau0.25": {
+    "bp": -17.616981760786604,
+    "t": -1.019130957804195,
+    "p05": -25.043899150960055,
+    "p95": 21.554472580843495,
+    "outside_band": false
+  },
+  "all / top surprise quintile / plus long momentum / tau0.5": {
+    "bp": -19.543257160272038,
+    "t": -1.0999671385189398,
+    "p05": -25.892434659676738,
+    "p95": 27.657434227189597,
+    "outside_band": false
+  },
+  "all / every surprise level / standard / mean": {
+    "bp": -31.738038265503818,
+    "t_season": -3.061649479719306,
+    "t_two_way": -3.1779010684674796,
+    "events": 87931
+  },
+  "all / every surprise level / standard / tau0.1": {
+    "bp": -20.808784474885687,
+    "t": -2.062790311188257,
+    "p05": -12.623659599423702,
+    "p95": 14.058765332905715,
+    "outside_band": true
+  },
+  "all / every surprise level / standard / tau0.25": {
+    "bp": -18.88277159158047,
+    "t": -2.3777997709734833,
+    "p05": -10.13401974857003,
+    "p95": 9.473795297431973,
+    "outside_band": true
+  },
+  "all / every surprise level / standard / tau0.5": {
+    "bp": -17.904804160159003,
+    "t": -1.903817500429352,
+    "p05": -9.380509827912247,
+    "p95": 9.694669187492355,
+    "outside_band": true
+  },
+  "all / every surprise level / plus long momentum / mean": {
+    "bp": -25.31515579709013,
+    "t_season": -2.6835418085756175,
+    "t_two_way": -2.7495111704810635,
+    "events": 79768
+  },
+  "all / every surprise level / plus long momentum / tau0.1": {
+    "bp": -16.553501640531465,
+    "t": -1.5996882939487318,
+    "p05": -11.173101136759323,
+    "p95": 12.992183207186834,
+    "outside_band": true
+  },
+  "all / every surprise level / plus long momentum / tau0.25": {
+    "bp": -17.962924358014245,
+    "t": -2.2202959282450263,
+    "p05": -11.19657869171191,
+    "p95": 12.38132856267127,
+    "outside_band": true
+  },
+  "all / every surprise level / plus long momentum / tau0.5": {
+    "bp": -14.356099277285262,
+    "t": -1.7353917692752223,
+    "p05": -11.612845318833878,
+    "p95": 9.7958243468308,
+    "outside_band": true
+  },
+  "provisional / top surprise quintile / standard / mean": {
+    "bp": -64.21355932298385,
+    "t_season": -1.25272517750546,
+    "t_two_way": null,
+    "events": 2139
+  },
+  "provisional / top surprise quintile / standard / tau0.1": {
+    "bp": -80.93643029170909,
+    "t": -1.1093724399598541,
+    "p05": -105.13241565601348,
+    "p95": 85.11920542815292,
+    "outside_band": false
+  },
+  "provisional / top surprise quintile / standard / tau0.25": {
+    "bp": -32.614359487679046,
+    "t": -0.6821560061002508,
+    "p05": -72.25314280578829,
+    "p95": 68.04514845865725,
+    "outside_band": false
+  },
+  "provisional / top surprise quintile / standard / tau0.5": {
+    "bp": -56.482673964110326,
+    "t": -1.0339056963763498,
+    "p05": -69.42006494690612,
+    "p95": 69.42744448688354,
+    "outside_band": false
+  },
+  "provisional / top surprise quintile / plus long momentum / mean": {
+    "bp": -97.71318393979148,
+    "t_season": -2.0055567281723077,
+    "t_two_way": null,
+    "events": 1846
+  },
+  "provisional / top surprise quintile / plus long momentum / tau0.1": {
+    "bp": -121.59421485106597,
+    "t": -1.6107309382225032,
+    "p05": -108.02640999546962,
+    "p95": 105.01540111390968,
+    "outside_band": true
+  },
+  "provisional / top surprise quintile / plus long momentum / tau0.25": {
+    "bp": -54.59815187048849,
+    "t": -1.025494733659429,
+    "p05": -73.1943703660573,
+    "p95": 59.83291564073822,
+    "outside_band": false
+  },
+  "provisional / top surprise quintile / plus long momentum / tau0.5": {
+    "bp": -92.32188957782895,
+    "t": -1.8877760569905608,
+    "p05": -75.27631797883294,
+    "p95": 71.67718234998637,
+    "outside_band": true
+  },
+  "provisional / every surprise level / standard / mean": {
+    "bp": -40.17325902666729,
+    "t_season": -2.3928854900504235,
+    "t_two_way": -3.199833697329253,
+    "events": 18223
+  },
+  "provisional / every surprise level / standard / tau0.1": {
+    "bp": 1.2134718918326581,
+    "t": 0.059999378082989586,
+    "p05": -27.170935165612544,
+    "p95": 23.688172568363115,
+    "outside_band": false
+  },
+  "provisional / every surprise level / standard / tau0.25": {
+    "bp": -16.81708595555475,
+    "t": -1.1558150334828816,
+    "p05": -20.787455651243917,
+    "p95": 19.66838891891518,
+    "outside_band": false
+  },
+  "provisional / every surprise level / standard / tau0.5": {
+    "bp": -15.840115804791848,
+    "t": -1.028308462157641,
+    "p05": -20.393699597143634,
+    "p95": 23.090414627032274,
+    "outside_band": false
+  },
+  "provisional / every surprise level / plus long momentum / mean": {
+    "bp": -43.25835523017487,
+    "t_season": -2.5510492571440238,
+    "t_two_way": -2.6980650070631187,
+    "events": 16546
+  },
+  "provisional / every surprise level / plus long momentum / tau0.1": {
+    "bp": -0.2966723658371579,
+    "t": -0.013068181689279833,
+    "p05": -25.72196108169283,
+    "p95": 22.760532103676162,
+    "outside_band": false
+  },
+  "provisional / every surprise level / plus long momentum / tau0.25": {
+    "bp": -19.10456809468445,
+    "t": -1.2784056155854555,
+    "p05": -21.26601278614311,
+    "p95": 21.382475358003525,
+    "outside_band": false
+  },
+  "provisional / every surprise level / plus long momentum / tau0.5": {
+    "bp": -24.296420244154167,
+    "t": -1.4020417752158154,
+    "p05": -25.197603156224005,
+    "p95": 21.92230308429487,
+    "outside_band": false
+  }
+}
