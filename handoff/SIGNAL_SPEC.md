@@ -1,6 +1,6 @@
 # Korea pre-announcement positioning -- signal specification
 
-Generated 2026-09-03 09:32 UTC from the result files. One page. The two parquet files beside this document carry the signal (daily) and the verification set (per announcement).
+Generated 2026-09-03 09:54 UTC from the result files. One page. The two parquet files beside this document carry the signal (daily) and the verification set (per announcement).
 
 ## What the signal is
 
@@ -13,9 +13,9 @@ Construction code: `flow_intensity()` and `zwin()` in `20_event_panel.py`. Input
 | file | grain | rows | columns |
 | --- | --- | --- | --- |
 | `kr_positioning_daily.parquet` | ticker x trading day, 2011-01 onward | one row per ticker-day with at least one value | trade_date, ticker, inst_flow20, foreign_flow20 |
-| `kr_positioning_events.parquet` | one row per earnings filing | 122,643 (23,351 provisional) | ticker, announcement_date, kind, surprise, inst_flow20, foreign_flow20, surprise_quintile, crowding_tercile, abn5/20/60, controls |
+| `kr_positioning_events.parquet` | one row per earnings filing | 122,643 (23,351 provisional) | ticker, announcement_date, kind, surprise, inst_flow20, foreign_flow20, surprise_quintile, crowding_tercile, the two `_pooled` ranks, abn5/20/60, controls |
 
-`announcement_date` is the filing date; the signal is read as of that date (it uses the 20 days before). `surprise` is the announcement-day benchmark-adjusted return. `abn60` is the 60-trading-day return net of the equal-weight market starting the day after the filing, winsorised 1/99 within the day. `surprise_quintile` and `crowding_tercile` are ranks within the announcement day (1 = lowest).
+The daily file is restricted to ticker-days whose 20-day average value traded clears the event panel's liquidity floor, and the standardised values are clipped at +/-10 (a name with a year of near-zero institutional trading otherwise turns one trade into a z-score in the thousands). `announcement_date` is the filing date; the signal is read as of that date (it uses the 20 days before). `surprise_quintile` and `crowding_tercile` are ranks within the announcement day *and within the filing kind* -- use them for any provisional-only statistic. `surprise_quintile_pooled` and `crowding_tercile_pooled` rank within the day across both kinds -- use them for any all-filings statistic. All four are defined only on filings that carry a positioning value, the population every conditional number below was computed on; a rank is only meaningful relative to the sample it was taken in. `surprise` is the announcement-day benchmark-adjusted return. `abn60` is the 60-trading-day return net of the equal-weight market starting the day after the filing, winsorised 1/99 within the day. `surprise_quintile` and `crowding_tercile` are ranks within the announcement day (1 = lowest).
 
 ## How it was estimated here
 
