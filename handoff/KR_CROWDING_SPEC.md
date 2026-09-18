@@ -13,9 +13,34 @@ verified against a per-sub-type source, which reproduces the aggregate exactly
 and shows the omitted cells are zero in 97.6 to 100 percent of cases by year.
 
 ## Feature
-Net institutional buying value over the 20 trading days ending the day before
-the filing, divided by 20-day average traded value, rank-standardised across
-that day's cross-section.
+
+Two normalisations, applied in this order. Getting the order wrong produces a
+different variable.
+
+1. **Share of the issuer's own turnover.** Sum institutional net buying over
+   the 20 trading days ending the day before the filing, and divide by the sum
+   of that issuer's traded value over the same 20 days. Note this is a ratio of
+   sums, not an average of daily ratios, and the denominator is the sum of
+   traded value rather than a 20-day average.
+
+2. **Standardised against the issuer's own history.** Take the z-score of that
+   ratio against its own trailing 250 trading days, lagged one day so today is
+   excluded from its own mean and standard deviation. Minimum 120 observations.
+
+       r = sum(net, 20) / sum(traded_value, 20)
+       feature = (r - mean(r.shift(1), 250)) / sd(r.shift(1), 250)
+
+The estimator then rank-standardises the result across the day's cross-section
+before regressing, which is a third normalisation belonging to the estimator
+rather than to the feature.
+
+The double normalisation is why the feature is nearly orthogonal to the obvious
+things: correlation +0.007 with log market cap and -0.11 with 20-day momentum.
+Dividing by the issuer's own turnover removes the size and liquidity scale, and
+the time-series z-score removes whatever is persistent about the issuer.
+
+The column carrying this is `i_flow20_v2`; the count used by the universe rule
+is `inst_days20`.
 
 ## Controls
 surprise, c_mom20, c_mom60, c_size, c_vol, c_turn, c_mom120, c_mom250, c_mom500, each rank-standardised within the day.
