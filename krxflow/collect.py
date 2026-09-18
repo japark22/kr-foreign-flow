@@ -94,8 +94,24 @@ def login() -> bool:
         print("  export KRX_PW='your-krx-password'")
         return False
 
-    session = auth.build_krx_session(config.KRX_ID, config.KRX_PW)
-    return session is not None
+    last = None
+    for attempt in range(1, 5):
+        try:
+            session = auth.build_krx_session(config.KRX_ID, config.KRX_PW)
+            if session is not None:
+                return True
+            last = "the exchange returned no session"
+        except Exception as exc:                              # noqa: BLE001
+            last = f"{type(exc).__name__}: {exc}"
+        if attempt < 4:
+            wait = 5 * attempt
+            print(f"  login attempt {attempt} failed ({last}); "
+                  f"retrying in {wait}s")
+            time.sleep(wait)
+    print(f"  login failed after 4 attempts -- {last}")
+    print("  a name-resolution failure here is the local network rather than")
+    print("  the exchange, and the run is worth repeating once it is back")
+    return False
 
 
 def fetch_foreign_ownership(date: str, market: str) -> pd.DataFrame:

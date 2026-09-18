@@ -31,6 +31,15 @@ fi
 
 .venv/bin/python 05_daily_update.py --with-market "$@"
 
+# Net buying by investor type lives in the backfill script rather than
+# the daily one, and was never wired into this job -- which is why the
+# series sat four weeks behind while prices stayed current. A rolling
+# window is idempotent: days already stored are skipped, so this both
+# closes a gap and keeps up.
+.venv/bin/python 01_backfill.py --with-investor \
+    --start "$(date -v-45d +%Y-%m-%d)" \
+    || echo "  (investor flow update failed -- series will lag)"
+
 # Refresh the monitor page from the updated store, then publish it if it
 # changed. The commit carries only the page -- data never leaves the machine.
 .venv/bin/python 14_monitor.py
