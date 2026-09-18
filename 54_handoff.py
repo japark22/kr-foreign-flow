@@ -63,10 +63,23 @@ def main() -> int:
         net = (sub.pivot_table(index="trade_date", columns="ticker", values="net_value",
                                aggfunc="last", observed=True).sort_index()
                   .astype("float64").reindex(index=idx, columns=cols))
-        panels[tag] = ep.flow_intensity(net, vt, 20).astype("float32")
-        print(f"  {tag}: {int(panels[tag].notna().sum().sum()):,} ticker-days")
+        panels[tag] = ep.flow_intensity(net, vt, 20)
         del net
-    del iv, vt
+    del iv
+    # Same liquidity floor the event panel used, so the daily file describes
+    # the population the numbers were computed on; and a hard clip on the
+    # standardised value, because a name with a year of near-zero
+    # institutional trading turns one trade into a z-score in the thousands.
+    adv = vt.rolling(20, min_periods=5).mean()
+    liquid = adv >= ep.MIN_ADV
+    for tag in panels:
+        raw = panels[tag]
+        clipped = int((raw.abs() > 10).sum().sum())
+        panels[tag] = raw.where(liquid).clip(-10, 10).astype("float32")
+        print(f"  {tag}: {int(panels[tag].notna().sum().sum()):,} ticker-days "
+              f"after the liquidity floor (ADV >= {ep.MIN_ADV:,.0f}); "
+              f"{clipped:,} raw values beyond +/-10 clipped")
+    del vt, adv, liquid
 
     long = (pd.concat({k: v.stack(future_stack=True) for k, v in panels.items()}, axis=1)
               .dropna(how="all").reset_index())
@@ -82,13 +95,24 @@ def main() -> int:
     ev = pd.read_parquet(R / "event_panel.parquet")
     ev["D"] = pd.to_datetime(ev["D"])
     ev = ev.dropna(subset=["abn60", "surprise"]).copy()
-    g = ev.groupby("D")
-    ev["surprise_quintile"] = np.clip((g["surprise"].rank(pct=True) * 5).astype(int), 0, 4) + 1
+    # Both ranks are defined on filings that carry a positioning value, which
+    # is the population every conditional number in the record was computed
+    # on. Filings without one keep their returns but no rank.
     has = ev["i_flow20"].notna()
-    ev.loc[has, "crowding_tercile"] = np.clip(
-        (ev[has].groupby("D")["i_flow20"].rank(pct=True) * 3).astype(int), 0, 2) + 1
+    # Ranks within the announcement day, twice: inside each filing kind (the
+    # population behind every provisional-only number) and pooled across
+    # kinds (the population behind the all-filings numbers). A rank is only
+    # meaningful relative to the sample it was taken in.
+    for suffix, keys in (("", ["D", "kind"]), ("_pooled", ["D"])):
+        g = ev[has].groupby(keys)
+        ev.loc[has, f"surprise_quintile{suffix}"] = np.clip(
+            (g["surprise"].rank(pct=True) * 5).astype(int), 0, 4) + 1
+        ev.loc[has, f"crowding_tercile{suffix}"] = np.clip(
+            (g["i_flow20"].rank(pct=True) * 3).astype(int), 0, 2) + 1
     keep = ["ticker", "D", "kind", "surprise", "i_flow20", "f_flow20",
-            "surprise_quintile", "crowding_tercile", "abn5", "abn20", "abn60",
+            "surprise_quintile", "crowding_tercile",
+            "surprise_quintile_pooled", "crowding_tercile_pooled",
+            "abn5", "abn20", "abn60",
             "c_mom20", "c_mom60", "c_size", "c_vol", "c_turn"]
     ev = ev[keep].rename(columns={"D": "announcement_date",
                                   "i_flow20": "inst_flow20",
@@ -123,9 +147,9 @@ Construction code: `flow_intensity()` and `zwin()` in `20_event_panel.py`. Input
 | file | grain | rows | columns |
 | --- | --- | --- | --- |
 | `kr_positioning_daily.parquet` | ticker x trading day, 2011-01 onward | one row per ticker-day with at least one value | trade_date, ticker, inst_flow20, foreign_flow20 |
-| `kr_positioning_events.parquet` | one row per earnings filing | {len(ev):,} ({n_prov:,} provisional) | ticker, announcement_date, kind, surprise, inst_flow20, foreign_flow20, surprise_quintile, crowding_tercile, abn5/20/60, controls |
+| `kr_positioning_events.parquet` | one row per earnings filing | {len(ev):,} ({n_prov:,} provisional) | ticker, announcement_date, kind, surprise, inst_flow20, foreign_flow20, surprise_quintile, crowding_tercile, the two `_pooled` ranks, abn5/20/60, controls |
 
-`announcement_date` is the filing date; the signal is read as of that date (it uses the 20 days before). `surprise` is the announcement-day benchmark-adjusted return. `abn60` is the 60-trading-day return net of the equal-weight market starting the day after the filing, winsorised 1/99 within the day. `surprise_quintile` and `crowding_tercile` are ranks within the announcement day (1 = lowest).
+The daily file is restricted to ticker-days whose 20-day average value traded clears the event panel's liquidity floor, and the standardised values are clipped at +/-10 (a name with a year of near-zero institutional trading otherwise turns one trade into a z-score in the thousands). `announcement_date` is the filing date; the signal is read as of that date (it uses the 20 days before). `surprise_quintile` and `crowding_tercile` are ranks within the announcement day *and within the filing kind* -- use them for any provisional-only statistic. `surprise_quintile_pooled` and `crowding_tercile_pooled` rank within the day across both kinds -- use them for any all-filings statistic. All four are defined only on filings that carry a positioning value, the population every conditional number below was computed on; a rank is only meaningful relative to the sample it was taken in. `surprise` is the announcement-day benchmark-adjusted return. `abn60` is the 60-trading-day return net of the equal-weight market starting the day after the filing, winsorised 1/99 within the day. `surprise_quintile` and `crowding_tercile` are ranks within the announcement day (1 = lowest).
 
 ## How it was estimated here
 

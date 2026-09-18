@@ -5,7 +5,9 @@ deviation forced by data availability is reported beside the result.
 
 ## Universe
 Liquid listed equities where institutions traded the name on at least 10
-of the 20 trading days before the filing. A day with no row in the exchange's
+of the 20 trading days before the filing. The column that carries this count is
+`inst_days20`, and the filter is `inst_days20 >= 10`; the feature column is
+`i_flow20_v2`. A day with no row in the exchange's
 investor-type feed is a day with no institutional trade; that reading was
 verified against a per-sub-type source, which reproduces the aggregate exactly
 and shows the omitted cells are zero in 97.6 to 100 percent of cases by year.
