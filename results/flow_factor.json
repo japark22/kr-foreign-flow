@@ -1,0 +1,11 @@
+{
+  "identity_cells": 8445869,
+  "identity_median_abs": 7.914675859144182e-18,
+  "identity_worst_abs": 1.6930901125533637e-14,
+  "tolerance": 1e-09,
+  "rebuild_vs_panel_corr": 0.9999999962948212,
+  "vr_median": 1.468567132949829,
+  "vr_share_above_one": 0.727603287086791,
+  "beta_median": 0.35634997487068176,
+  "corr_idio_sys": -0.027688143794924756
+}
