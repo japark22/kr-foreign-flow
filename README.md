@@ -7,6 +7,29 @@ tradable.
 This repository holds the collection pipeline, the signal construction, the
 validation code, and the results.
 
+## Research at a glance
+
+**Question.** Korea publishes every stock's foreign ownership daily, a disclosure most markets do not have. Does that flow persist, and does it, or the institutional flow published beside it, predict returns well enough to trade after Korean transaction tax?
+
+**Phases and what each found.** Every number comes from a committed result file or a generated page.
+
+| Phase | Question | Answer |
+|---|---|---|
+| 1. Flow persistence | Does foreign flow continue? Does it predict returns? | Yes, it persists: lag-1 autocorrelation is +0.088 and 21% of it remains at lag 20, the shape of large orders worked over days. Returns barely move: 1-day IC +0.0039 (t +3.90), reversing by 20 days (t −4.37). Breakeven one-way cost is **2.4 bp** against 20 bp of sales tax, so the effect is **not tradable** (§5). |
+| 2. Positioning before earnings | Does institutional buying ahead of an earnings filing predict the reaction? | On provisional filings, institutional crowding in the 20 days before predicts **lower** 60-day size-adjusted returns: **−42.9 bp per SD, t −2.51**, over 17,841 events and 61 reporting seasons ([`results/published.json`](results/published.json), [event page](https://japark22.github.io/kr-foreign-flow/event.html)). An earlier −117.7 bp figure was retracted and the weighting choice behind it is documented. |
+| 3–4. Robustness and recovered sample | Does it survive threats, multiplicity and a cleaner sample? | Frozen specification: **−30.3 bp per SD (two-way t −2.98)**, rank IC −0.0152 (t −3.10), over 53,176 events and 49 seasons. It holds across five estimator variants (t 2.82–3.10), each outside its placebo band, and is weaker in the second half (−17.1 bp, t −1.55) ([`handoff/KR_CROWDING_SPEC.md`](handoff/KR_CROWDING_SPEC.md)). |
+| 5. Flow factor | Splitting flow into a market-wide allocation wave and a stock-specific decision | In progress ([`research/5_flow_factor`](research/5_flow_factor)). |
+
+**How it was kept honest**
+
+- The hypotheses were [pre-registered](PRE_REGISTRATION.md) before the data was examined.
+- Multiplicity is controlled with permutation family-wise bars and placebo bands.
+- Standard errors are clustered on the reporting season, and on the issuer where it matters.
+- A pykrx float16 rounding trap was found and avoided (§3).
+- Results feed generated pages, with no hand-copied numbers, and [`publish/80_audit.py`](publish/80_audit.py) re-derives every published figure before anything is shared.
+
+**Live.** A [monitor page](https://japark22.github.io/kr-foreign-flow/monitor.html) of recent foreign positioning is refreshed every trading day by a [GitHub Actions job](.github/workflows/update.yml).
+
 ---
 
 ## 1. The research question
@@ -350,32 +373,35 @@ question.
 
 ## 7. Repository layout
 
+Scripts keep their step numbers, so the order of the research is still readable. They are grouped by role:
+
 ```
-krxflow/
-  config.py     paths, credentials, schema, throttle settings
-  calendar.py   KRX trading days
-  collect.py    login, throttled and retrying fetchers
-  storage.py    parquet layout, atomic writes, range reads
-  dart.py       OpenDART client (corp codes, fiscal months, dividends)
-  rebalance.py  MSCI / FTSE effective dates, with an override file
-  exdiv.py      ex-dividend windows derived from fiscal year ends
-  features.py   panels, universe, corporate-action scrub, the flow signal
+krxflow/                  the library every script imports
+  config.py               paths, credentials, schema, throttle settings
+  calendar.py             KRX trading days
+  collect.py              login, throttled and retrying fetchers
+  storage.py              parquet layout, atomic writes, range reads
+  dart.py                 OpenDART client (corp codes, fiscal months, dividends)
+  rebalance.py, exdiv.py  index-rebalance and ex-dividend windows
+  features.py             panels, universe, corporate-action scrub, the flow signal
+  tracker.py, charts.py   forward-return tracker and SVG charts for the monitor
+  paths.py                script("20_event_panel.py") -> its path, for scripts that load each other
 
-00_smoke_test.py       environment and live-data self-check
-01_backfill.py         resumable history collection
-02_inspect.py          coverage QA
-03_collect_dart.py     OpenDART reference data
-04_validate.py         the hypothesis test
-05_daily_update.py     scheduled run: collect, report, push
-06_check_freshness.py  measures KRX publication lag and restatement
-
-scripts/
-  run_update.sh          launchd-safe wrapper
-  install_schedule.sh    install the scheduled jobs
-  uninstall_schedule.sh  remove them
-
-reports/
-  validation.md          generated results, committed
+pipeline/                 data: 00 smoke test, 01 backfill, 02 inspect, 03 DART,
+                          05 daily update, 06 freshness, 15 earnings dates, 17 investor detail
+research/
+  1_flow_persistence/     04 hypothesis test, 07-12 signal sweep, level signals, standard errors
+  2_earnings_positioning/ 16-40 event study, baseline regressions, multiplicity, threats
+  3_robustness/           43-52 book value, extended sample, regimes, event path, tails
+  4_recovered_sample/     55-79 recovered sample, participation, short-sale bans, final lock
+  5_flow_factor/          81-83 allocation wave vs stock decision (in progress)
+publish/                  13 research page, 14 monitor, 41-42 event page, 53 notebook,
+                          54 handoff files, 80 pre-release audit
+tools/                    scratch diagnostics
+scripts/                  local scheduling wrappers (launchd)
+docs/                     the published pages (GitHub Pages)
+results/, reports/        generated result files, notebooks and reports
+handoff/                  frozen specifications
 ```
 
 ---
@@ -386,14 +412,15 @@ reports/
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+pip install -e .          # makes krxflow importable from every folder
 
 cp .env.example .env      # fill in KRX_ID, KRX_PW, DART_API_KEY
 set -a && source .env && set +a
 
-python 00_smoke_test.py
-python 01_backfill.py --start 2010-01-01 --with-market
-python 03_collect_dart.py
-python 04_validate.py --horizons 1,5,20
+python pipeline/00_smoke_test.py
+python pipeline/01_backfill.py --start 2010-01-01 --with-market
+python pipeline/03_collect_dart.py
+python research/1_flow_persistence/04_validate.py --horizons 1,5,20
 ```
 
 The backfill is resumable: every trading day is its own file and finished days
@@ -408,10 +435,17 @@ endpoint. An OpenDART key is free and issued on request.
 
 ## 9. Operational notes
 
-**Scheduled runs.** `scripts/install_schedule.sh` registers two launchd jobs: a
-daily collection run, and a weekly run that regenerates `reports/validation.md`
-and pushes it. `05_daily_update.py` works out what is missing and fetches only
-that, so it is safe to fire on a schedule and safe to run by hand.
+**Scheduled runs.** The daily collection runs on GitHub Actions
+([`.github/workflows/update.yml`](.github/workflows/update.yml), weekdays 20:05 KST).
+It restores a rolling window of exchange data from the Actions cache, about 820
+calendar days, which is what the monitor reads. It fetches the missing days and
+rebuilds `docs/monitor.html`, then commits only that page and `results/monitor.json`.
+Exchange data is never committed. On an empty cache the job backfills the window
+first. Credentials come from repository secrets (`KRX_ID`, `KRX_PW`, `DART_API_KEY`).
+The research results need the full 2010+ history, so they are rebuilt locally rather than
+on the runner. `scripts/install_schedule.sh` still sets up the earlier launchd
+jobs for a local machine. `pipeline/05_daily_update.py` works out what is missing and
+fetches only that, so it is safe to fire on a schedule and safe to run by hand.
 
 **Report cadence is weekly by design.** The validation statistics run over
 4,000+ trading days, so one additional day shifts them by ~0.02%. Regenerating

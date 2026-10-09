@@ -1,0 +1,105 @@
+name: update
+
+# Daily collection and monitor page, on GitHub's servers.
+# 11:05 UTC = 20:05 KST, after the exchange publishes the day's investor data.
+# The research results (results/*.json, docs/index.html, docs/event.html) are
+# NOT recomputed here: they need the full 2010+ history, which stays local.
+on:
+  schedule:
+    - cron: "5 11 * * 1-5"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "update | smoke"
+        default: "update"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    env:
+      KRX_ID: ${{ secrets.KRX_ID }}
+      KRX_PW: ${{ secrets.KRX_PW }}
+      DART_API_KEY: ${{ secrets.DART_API_KEY }}
+      # The monitor reads 500 trading days (~775 calendar days); keep a margin.
+      WINDOW_DAYS: "820"
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt && pip install -e . --no-deps
+
+      - name: check secrets
+        run: |
+          [ -n "$KRX_ID" ] && [ -n "$KRX_PW" ] || { echo "::error::secrets KRX_ID / KRX_PW are not set"; exit 1; }
+
+      - name: smoke test
+        if: inputs.mode == 'smoke'
+        run: python pipeline/00_smoke_test.py
+
+      # Exchange data is licensed and never committed; the rolling window the
+      # monitor needs persists between runs in the Actions cache.
+      - name: restore exchange data
+        if: inputs.mode != 'smoke'
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/raw
+            data/trading_days.json
+          key: krx-${{ github.run_id }}
+          restore-keys: krx-
+
+      - name: seed the window if the cache is empty
+        if: inputs.mode != 'smoke'
+        run: |
+          if [ -d data/raw/market ] && [ -n "$(ls -A data/raw/market 2>/dev/null)" ]; then
+            echo "cache present"; exit 0
+          fi
+          start=$(date -u -d "-${WINDOW_DAYS} days" +%Y-%m-%d)
+          echo "::notice::empty cache, backfilling from $start"
+          python pipeline/01_backfill.py --start "$start" --with-market --with-investor
+
+      - name: collect the latest days
+        if: inputs.mode != 'smoke'
+        run: |
+          for attempt in 1 2 3; do
+            python pipeline/05_daily_update.py --with-market && break
+            [ $attempt -lt 3 ] && { echo "attempt $attempt failed, retrying in 300 s"; sleep 300; } || exit 1
+          done
+          for attempt in 1 2 3; do
+            python pipeline/01_backfill.py --with-investor --start "$(date -u -d '-45 days' +%Y-%m-%d)" && break
+            [ $attempt -lt 3 ] && { echo "attempt $attempt failed, retrying in 300 s"; sleep 300; } || exit 1
+          done
+
+      - name: rebuild the monitor page
+        if: inputs.mode != 'smoke'
+        run: python publish/14_monitor.py
+
+      - name: save exchange data
+        if: always() && inputs.mode != 'smoke'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/raw
+            data/trading_days.json
+          key: krx-${{ github.run_id }}
+
+      - name: publish
+        if: inputs.mode != 'smoke'
+        run: |
+          git config user.name "japark22"
+          git config user.email "294023279+japark22@users.noreply.github.com"
+          git add docs/monitor.html results/monitor.json
+          git diff --cached --quiet && { echo "pages unchanged"; exit 0; }
+          git commit -q -m "report: scheduled refresh $(date -u +%Y-%m-%d)"
+          for i in 1 2 3; do git pull -q --rebase && git push -q && exit 0; sleep $((i*10)); done
+          exit 1

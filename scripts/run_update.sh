@@ -12,6 +12,9 @@ set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$HERE"
+# Scripts live in pipeline/, publish/ and research/ and import the krxflow
+# package from the repository root.
+export PYTHONPATH="$HERE${PYTHONPATH:+:$PYTHONPATH}"
 
 if [[ ! -f .env ]]; then
     echo "ERROR: .env not found in $HERE" >&2
@@ -29,25 +32,25 @@ if [[ ! -x .venv/bin/python ]]; then
     exit 1
 fi
 
-.venv/bin/python 05_daily_update.py --with-market "$@"
+.venv/bin/python pipeline/05_daily_update.py --with-market "$@"
 
 # Net buying by investor type lives in the backfill script rather than
 # the daily one, and was never wired into this job -- which is why the
 # series sat four weeks behind while prices stayed current. A rolling
 # window is idempotent: days already stored are skipped, so this both
 # closes a gap and keeps up.
-.venv/bin/python 01_backfill.py --with-investor \
+.venv/bin/python pipeline/01_backfill.py --with-investor \
     --start "$(date -v-45d +%Y-%m-%d)" \
     || echo "  (investor flow update failed -- series will lag)"
 
 # Refresh the monitor page from the updated store, then publish it if it
 # changed. The commit carries only the page -- data never leaves the machine.
-.venv/bin/python 14_monitor.py
+.venv/bin/python publish/14_monitor.py
 
 # Rebuilt on the weekly run, and whenever the page is missing: a build that
 # failed once must not leave the site without its research page.
 if [[ "$*" == *--report* || ! -f docs/index.html ]]; then
-    .venv/bin/python 13_build_report.py || echo "  (research page build failed)"
+    .venv/bin/python publish/13_build_report.py || echo "  (research page build failed)"
 fi
 
 # The event-study page is rebuilt only after the published results file has
@@ -55,8 +58,8 @@ fi
 # is older than the panel it came from. A stale figure therefore cannot reach
 # the page: the build fails first and says so.
 if [[ "$*" == *--report* || ! -f docs/event.html ]]; then
-    if .venv/bin/python 41_publish.py; then
-        .venv/bin/python 42_build_event_page.py \
+    if .venv/bin/python publish/41_publish.py; then
+        .venv/bin/python publish/42_build_event_page.py \
             || echo "  (event page build failed)"
     else
         echo "  (results are stale -- event page left as it was)"
