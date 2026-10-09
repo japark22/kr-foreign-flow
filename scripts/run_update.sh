@@ -32,16 +32,23 @@ if [[ ! -x .venv/bin/python ]]; then
     exit 1
 fi
 
-.venv/bin/python pipeline/05_daily_update.py --with-market "$@"
+for attempt in 1 2 3; do
+    .venv/bin/python pipeline/05_daily_update.py --with-market "$@" && break
+    echo "  update attempt $attempt failed; retrying in 300s"
+    [[ $attempt -lt 3 ]] && sleep 300
+done
 
 # Net buying by investor type lives in the backfill script rather than
 # the daily one, and was never wired into this job -- which is why the
 # series sat four weeks behind while prices stayed current. A rolling
 # window is idempotent: days already stored are skipped, so this both
 # closes a gap and keeps up.
-.venv/bin/python pipeline/01_backfill.py --with-investor \
-    --start "$(date -v-45d +%Y-%m-%d)" \
-    || echo "  (investor flow update failed -- series will lag)"
+for attempt in 1 2 3; do
+    .venv/bin/python pipeline/01_backfill.py --with-investor \
+        --start "$(date -v-45d +%Y-%m-%d)" && break
+    echo "  investor flow attempt $attempt failed; retrying in 300s"
+    [[ $attempt -lt 3 ]] && sleep 300 || echo "  (investor flow update failed -- series will lag)"
+done
 
 # Refresh the monitor page from the updated store, then publish it if it
 # changed. The commit carries only the page -- data never leaves the machine.
