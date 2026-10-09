@@ -75,7 +75,10 @@ def compute(lookback: int) -> dict:
     import pandas as pd
     from krxflow import features, storage
 
-    start = (dt.date.today() - dt.timedelta(days=int(lookback * 1.55))).isoformat()
+    # The store names its files by YYYYMMDD, and read_range compares those names
+    # as strings. An ISO date ("2024-08-25") sorts after every "2024MMDD", so it
+    # silently widened the window to January 1 of the start year.
+    start = (dt.date.today() - dt.timedelta(days=int(lookback * 1.55))).strftime("%Y%m%d")
     print(f"loading from {start} ...")
     p = features.load_panels(start, None)
     pct, shares = p["foreign_pct"], p["foreign_shares"]
